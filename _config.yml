@@ -1,0 +1,16 @@
+# Site settings
+title: Medo Hamdani's Portfolio & Blog
+description: A personal website featuring code, thoughts, and books in English and Arabic.
+baseurl: "" # The subpath of your site, e.g. /blog
+url: "https://medohamdani.github.io" # The base hostname & protocol for your site
+lang: en # Default language
+
+# Theme settings (for Minimal Mistakes, or a similar theme)
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+minimal_mistakes_skin: "dark"
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
