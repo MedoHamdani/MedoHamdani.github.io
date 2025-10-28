@@ -1,0 +1,11 @@
+main:
+  - title: "Home"
+    url: /
+  - title: "About Me"
+    url: /about/
+  - title: "Contact Me"
+    url: /contact/
+  - title: "Blogs (English)"
+    url: /posts/
+  - title: "المدونات (العربية)"
+    url: /posts_ar/
