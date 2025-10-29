@@ -1,0 +1,64 @@
+backend:
+  name: github
+  repo: MedoHamdani/MedoHamdani.github.io  # CHANGE THIS to your exact username/repository
+  branch: main
+  base_url: https://github.com
+  auth_endpoint: /api/v1/auth
+
+local_backend: true # Allows local development if needed
+publish_mode: editorial_workflow
+
+media_folder: "assets/images/uploads" # Folder where uploaded images go
+public_folder: "/assets/images/uploads"
+
+# Collections define the editable content (Posts, Pages, etc.)
+collections:
+  - name: "blog-en"
+    label: "English Blog Posts"
+    folder: "_posts"
+    create: true # Allows creating new posts (your + button)
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "single"}
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", required: true}
+      - {label: "Language Tag", name: "lang", widget: "hidden", default: "en"}
+      - {label: "Categories", name: "categories", widget: "list", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "blog-ar"
+    label: "Arabic Blog Posts"
+    folder: "_posts_ar" # Connects to your custom Arabic folder
+    create: true # Allows creating new posts
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "single"}
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", required: true}
+      - {label: "Language Tag", name: "lang", widget: "hidden", default: "ar"}
+      - {label: "Text Direction", name: "text_direction", widget: "hidden", default: "rtl"}
+      - {label: "Collection Tag", name: "collection", widget: "hidden", default: "posts_ar"}
+      - {label: "Categories", name: "categories", widget: "list", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "pages"
+    label: "Site Pages"
+    files:
+      - file: "about/index.md"
+        label: "About Me Page"
+        name: "about"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Permalink", name: "permalink", widget: "hidden", default: "/about/"}
+          - {label: "Layout", name: "layout", widget: "hidden", default: "single"}
+          - {label: "Body", name: "body", widget: "markdown"}
+      - file: "contact/index.md"
+        label: "Contact Me Page"
+        name: "contact"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Permalink", name: "permalink", widget: "hidden", default: "/contact/"}
+          - {label: "Layout", name: "layout", widget: "hidden", default: "single"}
+          - {label: "Body", name: "body", widget: "markdown"}
