@@ -3,7 +3,8 @@ backend:
   repo: MedoHamdani/MedoHamdani.github.io
   branch: main
 
-local_backend: true 
+# local_backend should be commented out or removed for production
+# local_backend: true
 publish_mode: editorial_workflow
 
 media_folder: "assets/images/uploads" 
