@@ -2,8 +2,9 @@ backend:
   name: github
   repo: MedoHamdani/MedoHamdani.github.io
   branch: main
+  auth_type: implicit
+  app_id: Ov23liIzHDvGH3iuFClC
 
-local_backend: true 
 publish_mode: editorial_workflow
 
 media_folder: "assets/images/uploads" 
