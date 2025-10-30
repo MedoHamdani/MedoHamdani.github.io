@@ -5,6 +5,8 @@ main:
     url: /about/
   - title: "Contact Me"
     url: /contact/
+  - title: "My Books" # ADD THIS LINE
+    url: /books/     # AND THIS LINE
   - title: "Blogs (English)"
     url: /posts/
   - title: "المدونات (العربية)"
