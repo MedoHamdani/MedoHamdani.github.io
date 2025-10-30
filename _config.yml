@@ -20,6 +20,8 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
 
+include: ["admin"] # Make sure the admin folder is included in the build
+
 # Collections (Tells Jekyll about your custom post folders)
 collections:
   posts_ar: # This is your Arabic posts folder
