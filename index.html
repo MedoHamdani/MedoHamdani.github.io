@@ -1,344 +1,669 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOHAMED HAMDANI</title>
-    <!-- Quill.js CSS -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-            padding: 0.5rem;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
-        .section {
-            padding: 2rem;
-            display: none;
-        }
-        .section.active {
-            display: block;
-        }
-        .lang-switcher {
-            text-align: center;
-            padding: 1rem;
-        }
-        .lang-switcher button {
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        #post-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        #post-form input {
-            padding: 0.5rem;
-            font-size: 1rem;
-        }
-        #post-form button {
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            width: fit-content;
-        }
-        /* Quill editor style */
-        #editor {
-            height: 250px;
-        }
-        .post-article {
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-        }
-        .post-actions button {
-            margin-left: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medo Hamdani</title>
+  <style>
+    :root {
+      --primary: #2d3748;
+      --secondary: #4a5568;
+      --accent: #3182ce;
+      --light: #f7fafc;
+      --dark: #1a202c;
+      --gray: #e2e8f0;
+      --success: #38a169;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--primary);
+      background-color: var(--light);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 500;
+      transition: color 0.3s;
+      white-space: nowrap;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .lang-switch {
+      background: none;
+      border: 1px solid var(--gray);
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: var(--secondary);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .lang-switch:hover {
+      background-color: var(--gray);
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: var(--dark);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .card p {
+      margin-bottom: 1rem;
+      color: var(--secondary);
+    }
+
+    .card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .product-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product-card h3 {
+      margin-bottom: 0.5rem;
+      color: var(--dark);
+    }
+
+    .product-card .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      background-color: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #2b6cb0;
+    }
+
+    footer {
+      background-color: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .videos-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <header>
-        <h1>Medo Hamdani</h1>
-    </header>
-
-    <nav>
-        <a href="#home" onclick="showSection('home')">Home</a>
-        <a href="#about" onclick="showSection('about')">About Me</a>
-        <a href="#contact" onclick="showSection('contact')">Contact Me</a>
-        <a href="#blog" onclick="showSection('blog')">Blog</a>
-    </nav>
-
-    <div class="lang-switcher">
-        <button onclick="switchLang('en')">English</button>
-        <button onclick="switchLang('ar')">العربية</button>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo" id="logo">Medo Hamdani</div>
+        <div class="nav-links">
+          <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+          <a href="#about" data-en="About" data-ar="عنّي">About</a>
+          <a href="#blog" data-en="Blog" data-ar="المدونة">Blog</a>
+          <a href="#videos" data-en="Videos" data-ar="الفيديوهات">Videos</a>
+          <a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a>
+          <a href="#products" data-en="Products" data-ar="المنتجات">Products</a>
+          <a href="#social" data-en="Social" data-ar="التواصل">Social</a>
+          <a href="#contact" data-en="Contact" data-ar="اتصل بي">Contact</a>
+        </div>
+        <button class="lang-switch" id="langSwitch">ع</button>
+      </nav>
     </div>
+  </header>
 
-    <div id="home" class="section active">
-        <h2 data-en="Welcome to my Website" data-ar="مرحبا بكم في موقعي">Welcome to my Website</h2>
-        <p data-en="This is the homepage." data-ar="هذه هي الصفحة الرئيسية.">This is the homepage.</p>
+  <main>
+    <section id="home">
+      <div class="container">
+        <h1 class="section-title" id="homeTitle">Welcome to My Website</h1>
+        <p style="text-align: center; font-size: 1.2rem;" id="homeDesc">Discover my journey, projects, and connect with me.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title" id="aboutTitle">About Me</h2>
+        <div class="about-content">
+          <div class="about-text" id="aboutText">
+            <p>Mohammed AL-Hamdani also known on the web as Medo Hamdani is a multi talented, motivated self-starter with a passion for helping and motivating others, with strong analytical abilities for problem-solving and managing issues.</p>
+            <p>He is a great team player with proven leadership and communication skills. He graduated from UCSI University as a Petroleum Engineer in 2015. During his time at the university, he volunteered in various clubs such as Junior Chamber International (JCI) as a member, Society of Petroleum Engineers (SPE) as president club, and UCSI Taekwondo Club as a vice president and the secretary of the Yemeni Student Association.</p>
+            <p>Furthermore, he represented his university locally in South Asia SPE Student Chapter Conference in Malaysia, and internationally in the International Petroleum Technology Conference in China. Furthermore, he joined many workshops and seminars in various topics relevant and not relevant to the course of study. He was awarded the dean’s award and got a bronze medal in the Korean Cyber International Genius Inventor Fair for his idea for the smart lift.</p>
+          </div>
+          <div>
+            <img src="https://placehold.co/400x500/3182ce/white?text=Medo+Hamdani" alt="Medo Hamdani" style="width:100%; border-radius:8px;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog">
+      <div class="container">
+        <h2 class="section-title" id="blogTitle">Blog</h2>
+        <div class="cards-grid">
+          <div class="card">
+            <h3 id="blog1">Life Lessons from Yemen</h3>
+            <p>Reflections on culture, resilience, and personal growth from my Yemeni roots.</p>
+            <a href="http://lifelessonsyemen.blogspot.com.eg/" target="_blank" id="readMore1">Read More</a>
+          </div>
+          <div class="card">
+            <h3 id="blog2">Japanese Anime & Culture</h3>
+            <p>Exploring the fascinating world of Japanese anime and its cultural impact.</p>
+            <a href="http://japaneseanimeyemen.blogspot.com.eg/" target="_blank" id="readMore2">Read More</a>
+          </div>
+          <div class="card">
+            <h3 id="blog3">Personal Journey & Thoughts</h3>
+            <p>My personal reflections, experiences, and insights on various topics.</p>
+            <a href="https://medohamdani.blogspot.com" target="_blank" id="readMore3">Read More</a>
+          </div>
+          <div class="card">
+            <h3 id="blog4">Getting Married in Sydney</h3>
+            <p>Guide and personal experience about marriage planning in Sydney, Australia.</p>
+            <a href="https://getmarriedinsydney.blogspot.com/2025/04/muzmatch-bio-medo-hamdani.html" target="_blank" id="readMore4">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="container">
+        <h2 class="section-title" id="videosTitle">Videos</h2>
+        <div class="videos-grid">
+          <div class="card">
+            <h3 id="video1">Motivational Talk: Knowing Yourself is True Power</h3>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/a3mBVqkcTso" title="Motivational Talk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <a href="https://youtu.be/a3mBVqkcTso" target="_blank" id="watch1">Watch on YouTube</a>
+          </div>
+          <div class="card">
+            <h3 id="video2">YouTube Channel Highlights</h3>
+            <p>Subscribe to my YouTube channel for educational and motivational content.</p>
+            <div class="video-container">
+              <iframe src="https://www.youtube.com/embed/?list=UU" title="YouTube channel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <a href="https://www.youtube.com/c/MedoHamdani" target="_blank" id="watch2">Watch on YouTube</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title" id="projectsTitle">Projects</h2>
+        <div class="cards-grid">
+          <div class="card">
+            <h3 id="project1">Arabic Digitalization Group</h3>
+            <p>A non-profit initiative to digitize and share knowledge from Arab and Muslim scholars.</p>
+            <a href="https://sites.google.com/view/hamdani786/" target="_blank" id="learnMore1">Learn More</a>
+          </div>
+          <div class="card">
+            <h3 id="project2">Medo Auto Deals</h3>
+            <p>Automotive deals and services platform for the local community.</p>
+            <a href="https://medo-auto-deals.company.site/" target="_blank" id="learnMore2">Visit Website</a>
+          </div>
+          <div class="card">
+            <h3 id="project3">Smart Lift Innovation</h3>
+            <p>Bronze medal winner at Korean Cyber International Genius Inventor Fair.</p>
+            <a href="#" id="learnMore3">Project Details</a>
+          </div>
+          <div class="card">
+            <h3 id="project4">Petroleum Engineering Research</h3>
+            <p>Academic research and conference presentations in petroleum engineering.</p>
+            <a href="https://www.slideshare.net/MTaherHamdani" target="_blank" id="learnMore4">View Presentations</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container">
+        <h2 class="section-title" id="productsTitle">Digital Products</h2>
+        <div class="products-grid">
+          <div class="product-card">
+            <h3 id="product1">Arabic Digital Books Collection</h3>
+            <div class="price">$19.99</div>
+            <p>Digital collection of Arabic educational books and resources</p>
+            <a href="https://medohamdani.gumroad.com/" target="_blank" class="btn" id="buy1">Buy on Gumroad</a>
+          </div>
+          <div class="product-card">
+            <h3 id="product2">Self-Development Guide</h3>
+            <div class="price">$14.99</div>
+            <p>Comprehensive guide for personal and professional growth</p>
+            <a href="https://nzmly.com/medohamdani" target="_blank" class="btn" id="buy2">Buy on NZMLY</a>
+          </div>
+          <div class="product-card">
+            <h3 id="product3">Tech Career Bundle</h3>
+            <div class="price">$29.99</div>
+            <p>Resources and templates for tech career advancement</p>
+            <a href="https://medohamdani.gumroad.com/" target="_blank" class="btn" id="buy3">Buy on Gumroad</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="social">
+      <div class="container">
+        <h2 class="section-title" id="socialTitle">Social Media & Links</h2>
+        <div class="cards-grid">
+          <div class="card">
+            <h3>Twitter / X</h3>
+            <a href="https://twitter.com/MedoHamdani" target="_blank">https://twitter.com/MedoHamdani</a>
+          </div>
+          <div class="card">
+            <h3>Instagram (Personal)</h3>
+            <a href="https://www.instagram.com/medo_hamdani/" target="_blank">https://www.instagram.com/medo_hamdani/</a>
+          </div>
+          <div class="card">
+            <h3>Instagram (Auto Deals)</h3>
+            <a href="https://www.instagram.com/medo.auto.deals" target="_blank">https://www.instagram.com/medo.auto.deals</a>
+          </div>
+          <div class="card">
+            <h3>LinkedIn</h3>
+            <a href="https://www.linkedin.com/in/medohamdani/" target="_blank">https://www.linkedin.com/in/medohamdani/</a>
+          </div>
+          <div class="card">
+            <h3>GitHub</h3>
+            <a href="https://github.com/MedoHamdani" target="_blank">https://github.com/MedoHamdani</a>
+          </div>
+          <div class="card">
+            <h3>Telegram</h3>
+            <a href="https://t.me/ArabicDigitalBooks" target="_blank">https://t.me/ArabicDigitalBooks</a>
+          </div>
+          <div class="card">
+            <h3>LinkTree</h3>
+            <a href="https://linktr.ee/MedoHamdani" target="_blank">https://linktr.ee/MedoHamdani</a>
+          </div>
+          <div class="card">
+            <h3>Bento</h3>
+            <a href="https://bento.me/medo-hamdani" target="_blank">https://bento.me/medo-hamdani</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title" id="contactTitle">Contact Me</h2>
+        <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+          <p id="contactDesc">Feel free to reach out to me through any of my social media channels or send me a message directly.</p>
+          <a href="mailto:contact@medohamdani.com" class="btn" style="margin-top: 1rem;" id="emailBtn">Send Email</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p id="footerText">Design by Medo Hamdani</p>
     </div>
+  </footer>
 
-    <div id="about" class="section">
-        <h2 data-en="About Me" data-ar="عني">About Me</h2>
-        <p data-en="This is the about me page." data-ar="هذه هي صفحة عني.">This is the about me page.</p>
-    </div>
+  <script>
+    const translations = {
+      en: {
+        home: "Home",
+        about: "About",
+        blog: "Blog",
+        videos: "Videos",
+        projects: "Projects",
+        products: "Products",
+        social: "Social",
+        contact: "Contact",
+        homeTitle: "Welcome to My Website",
+        homeDesc: "Discover my journey, projects, and connect with me.",
+        aboutTitle: "About Me",
+        blogTitle: "Blog",
+        videosTitle: "Videos",
+        projectsTitle: "Projects",
+        productsTitle: "Digital Products",
+        socialTitle: "Social Media & Links",
+        contactTitle: "Contact Me",
+        contactDesc: "Feel free to reach out to me through any of my social media channels or send me a message directly.",
+        emailBtn: "Send Email",
+        footerText: "Design by Medo Hamdani",
+        langSwitch: "ع",
+        // Blog
+        blog1: "Life Lessons from Yemen",
+        blog2: "Japanese Anime & Culture",
+        blog3: "Personal Journey & Thoughts",
+        blog4: "Getting Married in Sydney",
+        readMore1: "Read More",
+        readMore2: "Read More",
+        readMore3: "Read More",
+        readMore4: "Read More",
+        // Videos
+        video1: "Motivational Talk: Knowing Yourself is True Power",
+        video2: "YouTube Channel Highlights",
+        watch1: "Watch on YouTube",
+        watch2: "Watch on YouTube",
+        // Projects
+        project1: "Arabic Digitalization Group",
+        project2: "Medo Auto Deals",
+        project3: "Smart Lift Innovation",
+        project4: "Petroleum Engineering Research",
+        learnMore1: "Learn More",
+        learnMore2: "Visit Website",
+        learnMore3: "Project Details",
+        learnMore4: "View Presentations",
+        // Products
+        product1: "Arabic Digital Books Collection",
+        product2: "Self-Development Guide",
+        product3: "Tech Career Bundle",
+        buy1: "Buy on Gumroad",
+        buy2: "Buy on NZMLY",
+        buy3: "Buy on Gumroad"
+      },
+      ar: {
+        home: "الرئيسية",
+        about: "عنّي",
+        blog: "المدونة",
+        videos: "الفيديوهات",
+        projects: "المشاريع",
+        products: "المنتجات",
+        social: "التواصل",
+        contact: "اتصل بي",
+        homeTitle: "مرحباً بك في موقعي",
+        homeDesc: "اكتشف رحلتي، مشاريعي، واتصل بي.",
+        aboutTitle: "عنّي",
+        blogTitle: "المدونة",
+        videosTitle: "الفيديوهات",
+        projectsTitle: "المشاريع",
+        productsTitle: "المنتجات الرقمية",
+        socialTitle: "وسائل التواصل والروابط",
+        contactTitle: "اتصل بي",
+        contactDesc: "لا تتردد في التواصل معي من خلال أي من قنوات التواصل الاجتماعي الخاصة بي أو أرسل لي رسالة مباشرة.",
+        emailBtn: "إرسال بريد إلكتروني",
+        footerText: "تصميم من قبل مدو الهمداني",
+        langSwitch: "EN",
+        // Blog
+        blog1: "دروس الحياة من اليمن",
+        blog2: "الأنمي الياباني والثقافة",
+        blog3: "رحلتي الشخصية وأفكاري",
+        blog4: "الزواج في سيدني",
+        readMore1: "اقرأ المزيد",
+        readMore2: "اقرأ المزيد",
+        readMore3: "اقرأ المزيد",
+        readMore4: "اقرأ المزيد",
+        // Videos
+        video1: "محاضرة تحفيزية: معرفة الذات هي القوة الحقيقية",
+        video2: "أبرز مقاطع قناة يوتيوب",
+        watch1: "شاهد على يوتيوب",
+        watch2: "شاهد على يوتيوب",
+        // Projects
+        project1: "مجموعة الرقمنة العربية",
+        project2: "صفقات مدو للسيارات",
+        project3: "ابتكار المصعد الذكي",
+        project4: "أبحاث هندسة البترول",
+        learnMore1: "اعرف المزيد",
+        learnMore2: "زيارة الموقع",
+        learnMore3: "تفاصيل المشروع",
+        learnMore4: "عرض العروض التقديمية",
+        // Products
+        product1: "مجموعة الكتب الرقمية العربية",
+        product2: "دليل التطوير الذاتي",
+        product3: "حزمة مهارات التقنية",
+        buy1: "اشتر من Gumroad",
+        buy2: "اشتر من NZMLY",
+        buy3: "اشتر من Gumroad"
+      }
+    };
 
-    <div id="contact" class="section">
-        <h2 data-en="Contact Me" data-ar="اتصل بي">Contact Me</h2>
-        <p data-en="You can reach me at:" data-ar="يمكنك التواصل معي عبر:"></p>
-        <ul>
-            <li data-en="Email: Medo300@gmail.com" data-ar="البريد الإلكتروني: Medo300@gmail.com">Email: Medo300@gmail.com</li>
-            <li data-en="Phone: +61410207299" data-ar="الهاتف: +61410207299">Phone: +61410207299</li>
-        </ul>
-        <h3 data-en="Social Media" data-ar="وسائل التواصل الاجتماعي">Social Media</h3>
-        <ul>
-            <li><a href="https://twitter.com/MedoHamdani" target="_blank">Twitter</a></li>
-            <li><a href="https://www.instagram.com/medo_hamdani/" target="_blank">Instagram</a></li>
-            <li><a href="https://www.youtube.com/c/MedoHamdani" target="_blank">YouTube</a></li>
-            <li><a href="https://www.facebook.com/MedoHamdani" target="_blank">Facebook</a></li>
-            <li><a href="https://www.linkedin.com/in/medohamdani/" target="_blank">LinkedIn</a></li>
-            <li><a href="https://github.com/MedoHamdani" target="_blank">GitHub</a></li>
-        </ul>
-    </div>
+    let currentLang = 'en';
 
-    <div id="blog" class="section">
-        <h2 data-en="Blog" data-ar="المدونة">Blog</h2>
-        <div id="posts-container"></div>
-        <hr>
-        <h3 id="form-title" data-en="New Post" data-ar="منشور جديد">New Post</h3>
-        <form id="post-form">
-            <input type="hidden" id="editing-path">
-            <input type="hidden" id="editing-sha">
-            <input type="text" id="post-title" placeholder="Post Title" required>
-            <div id="editor"></div>
-            <input type="password" id="github-token" placeholder="GitHub Token" required>
-            <button type="submit" id="submit-button">Publish</button>
-            <button type="button" id="cancel-edit" style="display:none;">Cancel Edit</button>
-        </form>
-    </div>
+    function updateContent(lang) {
+      currentLang = lang;
+      
+      // Update navigation
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = translations[lang][el.dataset.en.toLowerCase()];
+      });
+      
+      // Update section titles and content
+      document.getElementById('homeTitle').textContent = translations[lang].homeTitle;
+      document.getElementById('homeDesc').textContent = translations[lang].homeDesc;
+      document.getElementById('aboutTitle').textContent = translations[lang].aboutTitle;
+      document.getElementById('blogTitle').textContent = translations[lang].blogTitle;
+      document.getElementById('videosTitle').textContent = translations[lang].videosTitle;
+      document.getElementById('projectsTitle').textContent = translations[lang].projectsTitle;
+      document.getElementById('productsTitle').textContent = translations[lang].productsTitle;
+      document.getElementById('socialTitle').textContent = translations[lang].socialTitle;
+      document.getElementById('contactTitle').textContent = translations[lang].contactTitle;
+      document.getElementById('contactDesc').textContent = translations[lang].contactDesc;
+      document.getElementById('emailBtn').textContent = translations[lang].emailBtn;
+      document.getElementById('footerText').textContent = translations[lang].footerText;
+      
+      // Update blog section
+      document.getElementById('blog1').textContent = translations[lang].blog1;
+      document.getElementById('blog2').textContent = translations[lang].blog2;
+      document.getElementById('blog3').textContent = translations[lang].blog3;
+      document.getElementById('blog4').textContent = translations[lang].blog4;
+      document.getElementById('readMore1').textContent = translations[lang].readMore1;
+      document.getElementById('readMore2').textContent = translations[lang].readMore2;
+      document.getElementById('readMore3').textContent = translations[lang].readMore3;
+      document.getElementById('readMore4').textContent = translations[lang].readMore4;
+      
+      // Update videos section
+      document.getElementById('video1').textContent = translations[lang].video1;
+      document.getElementById('video2').textContent = translations[lang].video2;
+      document.getElementById('watch1').textContent = translations[lang].watch1;
+      document.getElementById('watch2').textContent = translations[lang].watch2;
+      
+      // Update projects section
+      document.getElementById('project1').textContent = translations[lang].project1;
+      document.getElementById('project2').textContent = translations[lang].project2;
+      document.getElementById('project3').textContent = translations[lang].project3;
+      document.getElementById('project4').textContent = translations[lang].project4;
+      document.getElementById('learnMore1').textContent = translations[lang].learnMore1;
+      document.getElementById('learnMore2').textContent = translations[lang].learnMore2;
+      document.getElementById('learnMore3').textContent = translations[lang].learnMore3;
+      document.getElementById('learnMore4').textContent = translations[lang].learnMore4;
+      
+      // Update products section
+      document.getElementById('product1').textContent = translations[lang].product1;
+      document.getElementById('product2').textContent = translations[lang].product2;
+      document.getElementById('product3').textContent = translations[lang].product3;
+      document.getElementById('buy1').textContent = translations[lang].buy1;
+      document.getElementById('buy2').textContent = translations[lang].buy2;
+      document.getElementById('buy3').textContent = translations[lang].buy3;
+      
+      // Update language switch button
+      document.getElementById('langSwitch').textContent = translations[lang].langSwitch;
+      
+      // Update direction and font for Arabic
+      if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+        document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+      } else {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = 'en';
+        document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+      }
+    }
 
-    <footer>
-        <p>&copy; 2024 MOHAMED HAMDANI</p>
-    </footer>
+    document.getElementById('langSwitch').addEventListener('click', () => {
+      const newLang = currentLang === 'en' ? 'ar' : 'en';
+      updateContent(newLang);
+    });
 
-    <!-- Quill.js -->
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-    <script>
-        const REPO_OWNER = 'MedoHamdani';
-        const REPO_NAME = 'MedoHamdani.github.io';
-        
-        const quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-
-        function showSection(sectionId) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            document.getElementById(sectionId).classList.add('active');
-            if (sectionId === 'blog') {
-                loadPosts();
-            }
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
         }
-
-        function switchLang(lang) {
-            document.querySelectorAll('[data-en]').forEach(el => {
-                el.textContent = el.dataset[lang];
-            });
-            document.documentElement.lang = lang;
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        }
-
-        async function loadPosts() {
-            const postsContainer = document.getElementById('posts-container');
-            postsContainer.innerHTML = 'Loading posts...';
-            try {
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/_posts`);
-                const files = await response.json();
-                if (response.ok && Array.isArray(files)) {
-                    postsContainer.innerHTML = '';
-                    for (const file of files) {
-                        const postResponse = await fetch(file.download_url);
-                        const postContent = await postResponse.text();
-                        const postElement = document.createElement('div');
-                        postElement.classList.add('post-article');
-                        const postTitle = file.name.replace(/\.html$/, '').replace(/-/g, ' ');
-                        
-                        postElement.innerHTML = `
-                            <h3>${postTitle}</h3>
-                            <div>${postContent}</div>
-                            <div class="post-actions">
-                                <button onclick="startEdit('${file.path}', '${file.sha}')">Edit</button>
-                                <button onclick="deletePost('${file.path}', '${file.sha}')">Delete</button>
-                            </div>
-                        `;
-                        postsContainer.appendChild(postElement);
-                    }
-                } else {
-                    postsContainer.innerHTML = 'No posts found.';
-                }
-            } catch (error) {
-                console.error('Error loading posts:', error);
-                postsContainer.innerHTML = 'Error loading posts.';
-            }
-        }
-
-        async function startEdit(path, sha) {
-            try {
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`);
-                const file = await response.json();
-                if (!response.ok) throw new Error(file.message);
-
-                const postContent = decodeURIComponent(escape(atob(file.content)));
-                const postTitle = file.name.replace(/\.html$/, '').replace(/-/g, ' ');
-
-                document.getElementById('editing-path').value = path;
-                document.getElementById('editing-sha').value = sha;
-                document.getElementById('post-title').value = postTitle;
-                document.getElementById('post-title').disabled = true; // Prevent changing title/filename
-                quill.root.innerHTML = postContent;
-
-                document.getElementById('form-title').textContent = 'Edit Post';
-                document.getElementById('submit-button').textContent = 'Update Post';
-                document.getElementById('cancel-edit').style.display = 'inline-block';
-                
-                document.getElementById('post-form').scrollIntoView();
-
-            } catch (error) {
-                console.error('Error loading post for editing:', error);
-                alert('Error loading post for editing: ' + error.message);
-            }
-        }
-        
-        document.getElementById('cancel-edit').addEventListener('click', () => {
-            document.getElementById('post-form').reset();
-            quill.root.innerHTML = '';
-            document.getElementById('editing-path').value = '';
-            document.getElementById('editing-sha').value = '';
-            document.getElementById('post-title').disabled = false;
-            document.getElementById('form-title').textContent = 'New Post';
-            document.getElementById('submit-button').textContent = 'Publish';
-            document.getElementById('cancel-edit').style.display = 'none';
-        });
-
-        async function deletePost(path, sha) {
-            const token = prompt('Please enter your GitHub token to delete this post:');
-            if (!token) {
-                alert('Token is required to delete posts.');
-                return;
-            }
-
-            if (!confirm('Are you sure you want to delete this post? This cannot be undone.')) {
-                return;
-            }
-
-            try {
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        message: `Delete post: ${path}`,
-                        sha: sha,
-                    }),
-                });
-
-                if (response.ok) {
-                    alert('Post deleted successfully!');
-                    loadPosts();
-                } else {
-                    const error = await response.json();
-                    alert(`Error deleting post: ${error.message}`);
-                }
-            } catch (error) {
-                console.error('Error deleting post:', error);
-                alert('An error occurred while deleting the post.');
-            }
-        }
-
-        document.getElementById('post-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const title = document.getElementById('post-title').value;
-            const content = quill.root.innerHTML;
-            const token = document.getElementById('github-token').value;
-
-            if (!title || content === '<p><br></p>' || !token) {
-                alert('Please fill in all fields.');
-                return;
-            }
-
-            const editingPath = document.getElementById('editing-path').value;
-            const fileName = `${title.replace(/\s+/g, '-')}.html`;
-            const filePath = editingPath || `_posts/${fileName}`;
-            
-            const fileContent = btoa(unescape(encodeURIComponent(content)));
-            
-            const body = {
-                message: `Post: ${title}`,
-                content: fileContent,
-                sha: document.getElementById('editing-sha').value || undefined
-            };
-
-            try {
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(body),
-                });
-
-                if (response.ok) {
-                    alert('Post saved successfully!');
-                    document.getElementById('cancel-edit').click(); // Reset form
-                    loadPosts();
-                } else {
-                    const error = await response.json();
-                    alert(`Error saving post: ${error.message}`);
-                }
-            } catch (error) {
-                console.error('Error saving post:', error);
-                alert('An error occurred while saving the post.');
-            }
-        });
-
-        // Show home section by default
-        showSection('home');
-    </script>
-
+      });
+    });
+  </script>
 </body>
 </html>
+
