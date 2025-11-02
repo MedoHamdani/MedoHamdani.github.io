@@ -3,16 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Medo Hamdani</title>
+  <title>Medo Hamdani | BizMapper v.1.1</title>
+  <meta name="description" content="Professional portfolio of Medo Hamdani - Multi-talented engineer, entrepreneur, and content creator" />
+  <meta name="keywords" content="Medo Hamdani, Mohammed AL-Hamdani, portfolio, engineer, entrepreneur, BizMapper" />
+  <meta name="author" content="Medo Hamdani" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Medo Hamdani | BizMapper" />
+  <meta property="og:description" content="Professional portfolio of Medo Hamdani - Multi-talented engineer, entrepreneur, and content creator" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://medohamdani.github.io" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Medo Hamdani | BizMapper" />
+  <meta name="twitter:description" content="Professional portfolio of Medo Hamdani - Multi-talented engineer, entrepreneur, and content creator" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Sakkal+Majalla:wght@400;700&family=Cairo:wght@200;300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --primary: #2d3748;
-      --secondary: #4a5568;
-      --accent: #3182ce;
-      --light: #f7fafc;
-      --dark: #1a202c;
+      --primary: #2563eb;
+      --secondary: #64748b;
+      --accent: #3b82f6;
+      --light: #f8fafc;
+      --dark: #1e293b;
       --gray: #e2e8f0;
-      --success: #38a169;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --background: #ffffff;
+      --foreground: #0f172a;
+      --card: #ffffff;
+      --card-foreground: #0f172a;
+      --border: #e2e8f0;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
     }
 
     * {
@@ -22,10 +51,33 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       line-height: 1.6;
-      color: var(--primary);
+      color: var(--foreground);
       background-color: var(--light);
+      overflow-x: hidden;
+    }
+
+    /* Arabic Font Styles */
+    [dir="rtl"] {
+      font-family: 'Cairo', 'Sakkal Majalla', 'Amiri', sans-serif;
+    }
+    
+    [dir="rtl"] h1, 
+    [dir="rtl"] h2, 
+    [dir="rtl"] h3, 
+    [dir="rtl"] h4, 
+    [dir="rtl"] h5, 
+    [dir="rtl"] h6 {
+      font-family: 'Cairo', 'Sakkal Majalla', 'Amiri', sans-serif;
+      font-weight: 700;
+    }
+    
+    [dir="rtl"] p, 
+    [dir="rtl"] span, 
+    [dir="rtl"] div {
+      font-family: 'Cairo', 'Sakkal Majalla', 'Amiri', sans-serif;
+      font-weight: 400;
     }
 
     .container {
@@ -36,11 +88,13 @@
     }
 
     header {
-      background-color: white;
+      background-color: var(--background);
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
       z-index: 100;
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.95);
     }
 
     nav {
@@ -53,7 +107,8 @@
     .logo {
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--primary);
+      text-decoration: none;
     }
 
     .nav-links {
@@ -64,32 +119,58 @@
 
     .nav-links a {
       text-decoration: none;
-      color: var(--primary);
+      color: var(--secondary);
       font-weight: 500;
       transition: color 0.3s;
       white-space: nowrap;
       font-size: 0.95rem;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
     }
 
     .nav-links a:hover {
-      color: var(--accent);
+      color: var(--primary);
     }
 
     .lang-switch {
-      background: none;
-      border: 1px solid var(--gray);
+      background: var(--primary);
+      color: white;
+      border: none;
       font-size: 0.85rem;
       cursor: pointer;
-      color: var(--secondary);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
       font-weight: 600;
       min-width: 36px;
       text-align: center;
+      transition: all 0.3s;
     }
 
     .lang-switch:hover {
-      background-color: var(--gray);
+      background-color: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
     }
 
     section {
@@ -98,24 +179,51 @@
 
     .section-title {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       font-size: 2.5rem;
       color: var(--dark);
+      font-weight: 700;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 2px;
     }
 
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 3rem;
       align-items: center;
     }
 
     .about-text {
       font-size: 1.1rem;
+      line-height: 1.8;
     }
 
     .about-text p {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+
+    .about-image {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .about-image:hover {
+      transform: scale(1.02);
     }
 
     /* Cards Grid */
@@ -127,45 +235,65 @@
     }
 
     .card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.3s;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
     }
 
     .card h3 {
-      margin-bottom: 0.5rem;
-      color: var(--accent);
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.25rem;
+      font-weight: 600;
     }
 
     .card p {
-      margin-bottom: 1rem;
-      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      color: var(--muted-foreground);
+      line-height: 1.6;
     }
 
     .card a {
-      color: var(--accent);
+      color: var(--primary);
       text-decoration: none;
       font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.3s;
     }
 
     .card a:hover {
-      text-decoration: underline;
+      gap: 0.75rem;
     }
 
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
     }
 
     .video-container iframe {
@@ -175,6 +303,7 @@
       width: 100%;
       height: 100%;
       border: none;
+      border-radius: 12px;
     }
 
     .videos-grid {
@@ -192,58 +321,200 @@
     }
 
     .product-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       text-align: center;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
     }
 
     .product-card h3 {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       color: var(--dark);
+      font-size: 1.25rem;
+      font-weight: 600;
     }
 
     .product-card .price {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: bold;
-      color: var(--accent);
-      margin-bottom: 1rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
     }
 
     .btn {
-      background-color: var(--accent);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       color: white;
       padding: 0.75rem 1.5rem;
       border: none;
-      border-radius: 4px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 1rem;
-      transition: background-color 0.3s;
+      font-weight: 500;
+      transition: all 0.3s;
       text-decoration: none;
-      display: inline-block;
-      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     .btn:hover {
-      background-color: #2b6cb0;
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .location-section {
+      background: var(--card);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+
+    .map-container {
+      aspect-video;
+      position: relative;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .location-info {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .location-info h3 {
+      color: var(--dark);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s;
+      color: var(--secondary);
+    }
+
+    .social-icon:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
     }
 
     footer {
-      background-color: var(--dark);
+      background: linear-gradient(135deg, var(--dark), #1e293b);
       color: white;
+      padding: 3rem 0;
       text-align: center;
-      padding: 2rem 0;
     }
 
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+    }
+
+    .footer-text a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .footer-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Mobile Responsive */
     @media (max-width: 768px) {
-      .about-content {
-        grid-template-columns: 1fr;
+      .nav-links {
+        display: none;
       }
 
-      .nav-links {
-        gap: 0.8rem;
-        font-size: 0.85rem;
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--background);
+        border-top: 1px solid var(--border);
+        padding: 1rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+
+      .mobile-menu.active {
+        display: block;
+      }
+
+      .mobile-menu a {
+        display: block;
+        padding: 0.75rem 0;
+        text-decoration: none;
+        color: var(--secondary);
+        font-weight: 500;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .mobile-menu a:hover {
+        color: var(--primary);
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
 
       .section-title {
@@ -253,6 +524,49 @@
       .videos-grid {
         grid-template-columns: 1fr;
       }
+
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Loading Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--muted);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
     }
   </style>
 </head>
@@ -260,7 +574,8 @@
   <header>
     <div class="container">
       <nav>
-        <div class="logo" id="logo">Medo Hamdani</div>
+        <a href="#" class="logo">Medo Hamdani | BizMapper</a>
+        
         <div class="nav-links">
           <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
           <a href="#about" data-en="About" data-ar="عنّي">About</a>
@@ -268,118 +583,197 @@
           <a href="#videos" data-en="Videos" data-ar="الفيديوهات">Videos</a>
           <a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a>
           <a href="#products" data-en="Products" data-ar="المنتجات">Products</a>
-          <a href="#social" data-en="Social" data-ar="التواصل">Social</a>
           <a href="#contact" data-en="Contact" data-ar="اتصل بي">Contact</a>
+          <button class="lang-switch" id="langSwitch">ع</button>
         </div>
-        <button class="lang-switch" id="langSwitch">ع</button>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
       </nav>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+        <a href="#about" data-en="About" data-ar="عنّي">About</a>
+        <a href="#blog" data-en="Blog" data-ar="المدونة">Blog</a>
+        <a href="#videos" data-en="Videos" data-ar="الفيديوهات">Videos</a>
+        <a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a>
+        <a href="#products" data-en="Products" data-ar="المنتجات">Products</a>
+        <a href="#contact" data-en="Contact" data-ar="اتصل بي">Contact</a>
+      </div>
     </div>
   </header>
 
   <main>
-    <section id="home">
+    <!-- Hero Section -->
+    <section id="home" class="fade-in">
       <div class="container">
         <h1 class="section-title" id="homeTitle">Welcome to My Website</h1>
-        <p style="text-align: center; font-size: 1.2rem;" id="homeDesc">Discover my journey, projects, and connect with me.</p>
+        <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto;" id="homeDesc">
+          Discover my journey, projects, and connect with me.
+        </p>
       </div>
     </section>
 
-    <section id="about">
+    <!-- About Section -->
+    <section id="about" class="fade-in" style="background-color: var(--card);">
       <div class="container">
         <h2 class="section-title" id="aboutTitle">About Me</h2>
         <div class="about-content">
           <div class="about-text" id="aboutText">
-            <p>Mohammed AL-Hamdani also known on the web as Medo Hamdani is a multi talented, motivated self-starter with a passion for helping and motivating others, with strong analytical abilities for problem-solving and managing issues.</p>
-            <p>He is a great team player with proven leadership and communication skills. He graduated from UCSI University as a Petroleum Engineer in 2015. During his time at the university, he volunteered in various clubs such as Junior Chamber International (JCI) as a member, Society of Petroleum Engineers (SPE) as president club, and UCSI Taekwondo Club as a vice president and the secretary of the Yemeni Student Association.</p>
-            <p>Furthermore, he represented his university locally in South Asia SPE Student Chapter Conference in Malaysia, and internationally in the International Petroleum Technology Conference in China. Furthermore, he joined many workshops and seminars in various topics relevant and not relevant to the course of study. He was awarded the dean’s award and got a bronze medal in the Korean Cyber International Genius Inventor Fair for his idea for the smart lift.</p>
+            <p id="aboutPara1">
+              Mohammed AL-Hamdani also known on the web as Medo Hamdani is a multi talented, motivated self-starter with a passion for helping and motivating others, with strong analytical abilities for problem-solving and managing issues.
+            </p>
+            <p id="aboutPara2">
+              He is a great team player with proven leadership and communication skills. He graduated from UCSI University as a Petroleum Engineer in 2015. During his time at the university, he volunteered in various clubs such as Junior Chamber International (JCI) as a member, Society of Petroleum Engineers (SPE) as president club, and UCSI Taekwondo Club as a vice president and the secretary of the Yemeni Student Association.
+            </p>
+            <p id="aboutPara3">
+              Furthermore, he represented his university locally in South Asia SPE Student Chapter Conference in Malaysia, and internationally in the International Petroleum Technology Conference in China. Furthermore, he joined many workshops and seminars in various topics relevant and not relevant to the course of study. He was awarded the dean's award and got a bronze medal in the Korean Cyber International Genius Inventor Fair for his idea for the smart lift.
+            </p>
           </div>
           <div>
-            <img src="Images/The Yemeni Medo.jpg" alt="Medo Hamdani" style="width:100%; border-radius:8px;">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop&crop=face&auto=format" alt="Medo Hamdani" class="about-image">
           </div>
         </div>
       </div>
     </section>
 
-    <section id="blog">
+    <!-- Blog Section -->
+    <section id="blog" class="fade-in">
       <div class="container">
         <h2 class="section-title" id="blogTitle">Blog</h2>
         <div class="cards-grid">
           <div class="card">
             <h3 id="blog1">Life Lessons from Yemen</h3>
             <p>Reflections on culture, resilience, and personal growth from my Yemeni roots.</p>
-            <a href="http://lifelessonsyemen.blogspot.com.eg/" target="_blank" id="readMore1">Read More</a>
+            <a href="http://lifelessonsyemen.blogspot.com.eg/" target="_blank" id="readMore1">
+              Read More 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
           <div class="card">
             <h3 id="blog2">Japanese Anime & Culture</h3>
             <p>Exploring the fascinating world of Japanese anime and its cultural impact.</p>
-            <a href="http://japaneseanimeyemen.blogspot.com.eg/" target="_blank" id="readMore2">Read More</a>
+            <a href="http://japaneseanimeyemen.blogspot.com.eg/" target="_blank" id="readMore2">
+              Read More 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
           <div class="card">
             <h3 id="blog3">Personal Journey & Thoughts</h3>
             <p>My personal reflections, experiences, and insights on various topics.</p>
-            <a href="https://medohamdani.blogspot.com" target="_blank" id="readMore3">Read More</a>
+            <a href="https://medohamdani.blogspot.com" target="_blank" id="readMore3">
+              Read More 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
           <div class="card">
             <h3 id="blog4">Getting Married in Sydney</h3>
             <p>Guide and personal experience about marriage planning in Sydney, Australia.</p>
-            <a href="https://getmarriedinsydney.blogspot.com/2025/04/muzmatch-bio-medo-hamdani.html" target="_blank" id="readMore4">Read More</a>
+            <a href="https://getmarriedinsydney.blogspot.com/2025/04/muzmatch-bio-medo-hamdani.html" target="_blank" id="readMore4">
+              Read More 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="videos">
+    <!-- Videos Section -->
+    <section id="videos" class="fade-in" style="background-color: var(--card);">
       <div class="container">
         <h2 class="section-title" id="videosTitle">Videos</h2>
         <div class="videos-grid">
           <div class="card">
-            <h3 id="video1">Motivational Talk: Knowing Yourself is True Power</h3>
+            <h3 id="video1">Arabic OCR Overview 2022</h3>
             <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/a3mBVqkcTso" title="Motivational Talk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/a3mBVqkcTso" title="Arabic OCR Overview 2022" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <a href="https://youtu.be/a3mBVqkcTso" target="_blank" id="watch1">Watch on YouTube</a>
+            <a href="https://youtu.be/a3mBVqkcTso" target="_blank" id="watch1">
+              Watch on YouTube 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
           <div class="card">
-            <h3 id="video2">YouTube Channel Highlights</h3>
-            <p>Subscribe to my YouTube channel for educational and motivational content.</p>
+            <h3 id="video2">Podcast Episodes</h3>
+            <p>Listen to my podcast episodes for insights, discussions, and valuable content.</p>
             <div class="video-container">
-              <iframe src="https://www.youtube.com/embed/?list=UU" title="YouTube channel" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PLWfiS7ueWtcC9YVy1i2C-KGK87QlbNNUb" title="Podcast Episodes" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
-            <a href="https://www.youtube.com/c/MedoHamdani" target="_blank" id="watch2">Watch on YouTube</a>
+            <a href="https://www.youtube.com/playlist?list=PLWfiS7ueWtcC9YVy1i2C-KGK87QlbNNUb" target="_blank" id="watch2">
+              Watch on YouTube 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="projects">
+    <!-- Projects Section -->
+    <section id="projects" class="fade-in">
       <div class="container">
         <h2 class="section-title" id="projectsTitle">Projects</h2>
         <div class="cards-grid">
           <div class="card">
             <h3 id="project1">Arabic Digitalization Group</h3>
             <p>A non-profit initiative to digitize and share knowledge from Arab and Muslim scholars.</p>
-            <a href="https://sites.google.com/view/hamdani786/" target="_blank" id="learnMore1">Learn More</a>
+            <a href="https://sites.google.com/view/hamdani786/" target="_blank" id="learnMore1">
+              Learn More 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
           <div class="card">
             <h3 id="project2">Medo Auto Deals</h3>
             <p>Automotive deals and services platform for the local community.</p>
-            <a href="https://medo-auto-deals.company.site/" target="_blank" id="learnMore2">Visit Website</a>
+            <a href="https://medo-auto-deals.company.site/" target="_blank" id="learnMore2">
+              Visit Website 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
           <div class="card">
             <h3 id="project3">Smart Lift Innovation</h3>
             <p>Bronze medal winner at Korean Cyber International Genius Inventor Fair.</p>
-            <a href="#" id="learnMore3">Project Details</a>
+            <a href="#" id="learnMore3">
+              Project Details 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
           <div class="card">
             <h3 id="project4">Petroleum Engineering Research</h3>
             <p>Academic research and conference presentations in petroleum engineering.</p>
-            <a href="https://www.slideshare.net/MTaherHamdani" target="_blank" id="learnMore4">View Presentations</a>
+            <a href="https://www.slideshare.net/MTaherHamdani" target="_blank" id="learnMore4">
+              View Presentations 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="products">
+    <!-- Products Section -->
+    <section id="products" class="fade-in" style="background-color: var(--card);">
       <div class="container">
         <h2 class="section-title" id="productsTitle">Digital Products</h2>
         <div class="products-grid">
@@ -387,70 +781,77 @@
             <h3 id="product1">Arabic Digital Books Collection</h3>
             <div class="price">$19.99</div>
             <p>Digital collection of Arabic educational books and resources</p>
-            <a href="https://medohamdani.gumroad.com/" target="_blank" class="btn" id="buy1">Buy on Gumroad</a>
+            <a href="https://medohamdani.gumroad.com/" target="_blank" class="btn" id="buy1">
+              Buy on Gumroad 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
           <div class="product-card">
             <h3 id="product2">Self-Development Guide</h3>
             <div class="price">$14.99</div>
             <p>Comprehensive guide for personal and professional growth</p>
-            <a href="https://nzmly.com/medohamdani" target="_blank" class="btn" id="buy2">Buy on NZMLY</a>
+            <a href="https://nzmly.com/medohamdani" target="_blank" class="btn" id="buy2">
+              Buy on NZMLY 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
           <div class="product-card">
             <h3 id="product3">Tech Career Bundle</h3>
             <div class="price">$29.99</div>
             <p>Resources and templates for tech career advancement</p>
-            <a href="https://medohamdani.gumroad.com/" target="_blank" class="btn" id="buy3">Buy on Gumroad</a>
+            <a href="https://medohamdani.gumroad.com/" target="_blank" class="btn" id="buy3">
+              Buy on Gumroad 
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="social">
-      <div class="container">
-        <h2 class="section-title" id="socialTitle">Social Media & Links</h2>
-        <div class="cards-grid">
-          <div class="card">
-            <h3>Twitter / X</h3>
-            <a href="https://twitter.com/MedoHamdani" target="_blank">https://twitter.com/MedoHamdani</a>
-          </div>
-          <div class="card">
-            <h3>Instagram (Personal)</h3>
-            <a href="https://www.instagram.com/medo_hamdani/" target="_blank">https://www.instagram.com/medo_hamdani/</a>
-          </div>
-          <div class="card">
-            <h3>Instagram (Auto Deals)</h3>
-            <a href="https://www.instagram.com/medo.auto.deals" target="_blank">https://www.instagram.com/medo.auto.deals</a>
-          </div>
-          <div class="card">
-            <h3>LinkedIn</h3>
-            <a href="https://www.linkedin.com/in/medohamdani/" target="_blank">https://www.linkedin.com/in/medohamdani/</a>
-          </div>
-          <div class="card">
-            <h3>GitHub</h3>
-            <a href="https://github.com/MedoHamdani" target="_blank">https://github.com/MedoHamdani</a>
-          </div>
-          <div class="card">
-            <h3>Telegram</h3>
-            <a href="https://t.me/ArabicDigitalBooks" target="_blank">https://t.me/ArabicDigitalBooks</a>
-          </div>
-          <div class="card">
-            <h3>LinkTree</h3>
-            <a href="https://linktr.ee/MedoHamdani" target="_blank">https://linktr.ee/MedoHamdani</a>
-          </div>
-          <div class="card">
-            <h3>Bento</h3>
-            <a href="https://bento.me/medo-hamdani" target="_blank">https://bento.me/medo-hamdani</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
       <div class="container">
         <h2 class="section-title" id="contactTitle">Contact Me</h2>
         <div style="text-align: center; max-width: 600px; margin: 0 auto;">
           <p id="contactDesc">Feel free to reach out to me through any of my social media channels or send me a message directly.</p>
-          <a href="mailto:contact@medohamdani.com" class="btn" style="margin-top: 1rem;" id="emailBtn">Send Email</a>
+          <a href="mailto:contact@medohamdani.com" class="btn" style="margin-top: 2rem;" id="emailBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            Send Email
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="fade-in" style="background-color: var(--card);">
+      <div class="container">
+        <h2 class="section-title">Location</h2>
+        <div class="location-section">
+          <div class="map-container">
+            <iframe
+              src="https://maps.google.com/maps?q=Belmore+NSW+2192&t=m&z=13&output=embed&iwloc=near"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Belmore NSW 2192 Location"
+            ></iframe>
+          </div>
+          <div class="location-info">
+            <h3>Belmore NSW 2192</h3>
+            <p>Located in the heart of Belmore, New South Wales. Feel free to reach out to schedule a visit or consultation.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -458,11 +859,66 @@
 
   <footer>
     <div class="container">
-      <p id="footerText">Design by Medo Hamdani</p>
+      <div class="footer-content">
+        <div class="social-icons">
+          <a href="https://twitter.com/MedoHamdani" target="_blank" class="social-icon" aria-label="Twitter">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/medo_hamdani/" target="_blank" class="social-icon" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/medo.auto.deals" target="_blank" class="social-icon" aria-label="Instagram Auto Deals">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/medohamdani/" target="_blank" class="social-icon" aria-label="LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="https://github.com/MedoHamdani" target="_blank" class="social-icon" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
+            </svg>
+          </a>
+          <a href="https://t.me/ArabicDigitalBooks" target="_blank" class="social-icon" aria-label="Telegram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </a>
+        </div>
+        
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#blog">Blog</a>
+          <a href="#videos">Videos</a>
+          <a href="#projects">Projects</a>
+          <a href="#products">Products</a>
+          <a href="#contact">Contact</a>
+        </div>
+        
+        <p class="footer-text">
+          Design by <span id="footerName">Medo Hamdani</span> | 
+          <a href="https://bit.ly/BizMapper" target="_blank">Biz Mapper</a> v.1.1
+        </p>
+      </div>
     </div>
   </footer>
 
   <script>
+    // Translation data
     const translations = {
       en: {
         home: "Home",
@@ -471,7 +927,6 @@
         videos: "Videos",
         projects: "Projects",
         products: "Products",
-        social: "Social",
         contact: "Contact",
         homeTitle: "Welcome to My Website",
         homeDesc: "Discover my journey, projects, and connect with me.",
@@ -480,42 +935,39 @@
         videosTitle: "Videos",
         projectsTitle: "Projects",
         productsTitle: "Digital Products",
-        socialTitle: "Social Media & Links",
         contactTitle: "Contact Me",
         contactDesc: "Feel free to reach out to me through any of my social media channels or send me a message directly.",
         emailBtn: "Send Email",
-        footerText: "Design by Medo Hamdani",
+        footerName: "Medo Hamdani",
         langSwitch: "ع",
         // Blog
         blog1: "Life Lessons from Yemen",
         blog2: "Japanese Anime & Culture",
         blog3: "Personal Journey & Thoughts",
         blog4: "Getting Married in Sydney",
-        readMore1: "Read More",
-        readMore2: "Read More",
-        readMore3: "Read More",
-        readMore4: "Read More",
+        readMore: "Read More",
         // Videos
-        video1: "Motivational Talk: Knowing Yourself is True Power",
-        video2: "YouTube Channel Highlights",
-        watch1: "Watch on YouTube",
-        watch2: "Watch on YouTube",
+        video1: "Arabic OCR Overview 2022",
+        video2: "Podcast Episodes",
+        watch: "Watch on YouTube",
         // Projects
         project1: "Arabic Digitalization Group",
         project2: "Medo Auto Deals",
         project3: "Smart Lift Innovation",
         project4: "Petroleum Engineering Research",
-        learnMore1: "Learn More",
-        learnMore2: "Visit Website",
-        learnMore3: "Project Details",
-        learnMore4: "View Presentations",
+        learnMore: "Learn More",
+        visitWebsite: "Visit Website",
+        projectDetails: "Project Details",
+        viewPresentations: "View Presentations",
         // Products
         product1: "Arabic Digital Books Collection",
         product2: "Self-Development Guide",
         product3: "Tech Career Bundle",
-        buy1: "Buy on Gumroad",
-        buy2: "Buy on NZMLY",
-        buy3: "Buy on Gumroad"
+        buy: "Buy on",
+        // About
+        aboutPara1: "Mohammed AL-Hamdani also known on the web as Medo Hamdani is a multi talented, motivated self-starter with a passion for helping and motivating others, with strong analytical abilities for problem-solving and managing issues.",
+        aboutPara2: "He is a great team player with proven leadership and communication skills. He graduated from UCSI University as a Petroleum Engineer in 2015. During his time at the university, he volunteered in various clubs such as Junior Chamber International (JCI) as a member, Society of Petroleum Engineers (SPE) as president club, and UCSI Taekwondo Club as a vice president and the secretary of the Yemeni Student Association.",
+        aboutPara3: "Furthermore, he represented his university locally in South Asia SPE Student Chapter Conference in Malaysia, and internationally in the International Petroleum Technology Conference in China. Furthermore, he joined many workshops and seminars in various topics relevant and not relevant to the course of study. He was awarded the dean's award and got a bronze medal in the Korean Cyber International Genius Inventor Fair for his idea for the smart lift."
       },
       ar: {
         home: "الرئيسية",
@@ -524,7 +976,6 @@
         videos: "الفيديوهات",
         projects: "المشاريع",
         products: "المنتجات",
-        social: "التواصل",
         contact: "اتصل بي",
         homeTitle: "مرحباً بك في موقعي",
         homeDesc: "اكتشف رحلتي، مشاريعي، واتصل بي.",
@@ -533,137 +984,179 @@
         videosTitle: "الفيديوهات",
         projectsTitle: "المشاريع",
         productsTitle: "المنتجات الرقمية",
-        socialTitle: "وسائل التواصل والروابط",
         contactTitle: "اتصل بي",
         contactDesc: "لا تتردد في التواصل معي من خلال أي من قنوات التواصل الاجتماعي الخاصة بي أو أرسل لي رسالة مباشرة.",
         emailBtn: "إرسال بريد إلكتروني",
-        footerText: "تصميم من قبل مدو الهمداني",
+        footerName: "ميدو همداني",
         langSwitch: "EN",
         // Blog
         blog1: "دروس الحياة من اليمن",
         blog2: "الأنمي الياباني والثقافة",
         blog3: "رحلتي الشخصية وأفكاري",
         blog4: "الزواج في سيدني",
-        readMore1: "اقرأ المزيد",
-        readMore2: "اقرأ المزيد",
-        readMore3: "اقرأ المزيد",
-        readMore4: "اقرأ المزيد",
+        readMore: "اقرأ المزيد",
         // Videos
-        video1: "محاضرة تحفيزية: معرفة الذات هي القوة الحقيقية",
-        video2: "أبرز مقاطع قناة يوتيوب",
-        watch1: "شاهد على يوتيوب",
-        watch2: "شاهد على يوتيوب",
+        video1: "نظرة عامة على التعرف الضوئي على الحروف العربية 2022",
+        video2: "حلقات البودكاست",
+        watch: "شاهد على يوتيوب",
         // Projects
         project1: "مجموعة الرقمنة العربية",
         project2: "صفقات مدو للسيارات",
         project3: "ابتكار المصعد الذكي",
         project4: "أبحاث هندسة البترول",
-        learnMore1: "اعرف المزيد",
-        learnMore2: "زيارة الموقع",
-        learnMore3: "تفاصيل المشروع",
-        learnMore4: "عرض العروض التقديمية",
+        learnMore: "اعرف المزيد",
+        visitWebsite: "زيارة الموقع",
+        projectDetails: "تفاصيل المشروع",
+        viewPresentations: "عرض العروض التقديمية",
         // Products
         product1: "مجموعة الكتب الرقمية العربية",
         product2: "دليل التطوير الذاتي",
         product3: "حزمة مهارات التقنية",
-        buy1: "اشتر من Gumroad",
-        buy2: "اشتر من NZMLY",
-        buy3: "اشتر من Gumroad"
+        buy: "اشتر من",
+        // About
+        aboutPara1: "محمد الهمداني، المعروف على الويب باسم ميدو همداني، هو شخص متعدد المواهب، متحفز ومبدئي ذاتي بشغف لمساعدة وتحفيز الآخرين، مع قدرات تحليلية قوية لحل المشكلات وإدارة القضايا.",
+        aboutPara2: "هو لاعب فريق رائع بمهارات قيادية وتواصل مثبتة. تخرج من جامعة UCSI كمهندس بترول في عام 2015. خلال فترة دراسته في الجامعة، تطوع في نوادي مختلفة مثل الغرفة الدولية للشباب (JCI) كعضو، وجمعية مهندسي البترول (SPE) كرئيس نادي، ونادي التايكوندو UCSI كنائب رئيس وأمين جمعية الطلاب اليمنيين.",
+        aboutPara3: "علاوة على ذلك، مثل جامعته محلياً في مؤتمر جمعية طلاب جنوب آسيا SPE في ماليزيا، ودولياً في المؤتمر الدولي لتقنية البترول في الصين. علاوة على ذلك، انضم إلى العديد من ورش العمل والدورات في مواضيع مختلفة ذات صلة وغير ذات صلة بالمسار الدراسي. حصل على جائزة العميد وحصل على ميدالية برونزية في معرض المخترعين العباقرة الدولي السيبراني الكوري لفكرته للمصعد الذكي."
       }
     };
 
     let currentLang = 'en';
 
+    // Update content based on language
     function updateContent(lang) {
       currentLang = lang;
+      const t = translations[lang];
+      
+      // Update document direction and language
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.documentElement.lang = lang;
       
       // Update navigation
       document.querySelectorAll('[data-en]').forEach(el => {
-        el.textContent = translations[lang][el.dataset.en.toLowerCase()];
+        const key = el.dataset.en;
+        if (t[key]) {
+          el.textContent = t[key];
+        }
       });
       
-      // Update section titles and content
-      document.getElementById('homeTitle').textContent = translations[lang].homeTitle;
-      document.getElementById('homeDesc').textContent = translations[lang].homeDesc;
-      document.getElementById('aboutTitle').textContent = translations[lang].aboutTitle;
-      document.getElementById('blogTitle').textContent = translations[lang].blogTitle;
-      document.getElementById('videosTitle').textContent = translations[lang].videosTitle;
-      document.getElementById('projectsTitle').textContent = translations[lang].projectsTitle;
-      document.getElementById('productsTitle').textContent = translations[lang].productsTitle;
-      document.getElementById('socialTitle').textContent = translations[lang].socialTitle;
-      document.getElementById('contactTitle').textContent = translations[lang].contactTitle;
-      document.getElementById('contactDesc').textContent = translations[lang].contactDesc;
-      document.getElementById('emailBtn').textContent = translations[lang].emailBtn;
-      document.getElementById('footerText').textContent = translations[lang].footerText;
-      
-      // Update blog section
-      document.getElementById('blog1').textContent = translations[lang].blog1;
-      document.getElementById('blog2').textContent = translations[lang].blog2;
-      document.getElementById('blog3').textContent = translations[lang].blog3;
-      document.getElementById('blog4').textContent = translations[lang].blog4;
-      document.getElementById('readMore1').textContent = translations[lang].readMore1;
-      document.getElementById('readMore2').textContent = translations[lang].readMore2;
-      document.getElementById('readMore3').textContent = translations[lang].readMore3;
-      document.getElementById('readMore4').textContent = translations[lang].readMore4;
-      
-      // Update videos section
-      document.getElementById('video1').textContent = translations[lang].video1;
-      document.getElementById('video2').textContent = translations[lang].video2;
-      document.getElementById('watch1').textContent = translations[lang].watch1;
-      document.getElementById('watch2').textContent = translations[lang].watch2;
-      
-      // Update projects section
-      document.getElementById('project1').textContent = translations[lang].project1;
-      document.getElementById('project2').textContent = translations[lang].project2;
-      document.getElementById('project3').textContent = translations[lang].project3;
-      document.getElementById('project4').textContent = translations[lang].project4;
-      document.getElementById('learnMore1').textContent = translations[lang].learnMore1;
-      document.getElementById('learnMore2').textContent = translations[lang].learnMore2;
-      document.getElementById('learnMore3').textContent = translations[lang].learnMore3;
-      document.getElementById('learnMore4').textContent = translations[lang].learnMore4;
-      
-      // Update products section
-      document.getElementById('product1').textContent = translations[lang].product1;
-      document.getElementById('product2').textContent = translations[lang].product2;
-      document.getElementById('product3').textContent = translations[lang].product3;
-      document.getElementById('buy1').textContent = translations[lang].buy1;
-      document.getElementById('buy2').textContent = translations[lang].buy2;
-      document.getElementById('buy3').textContent = translations[lang].buy3;
+      // Update all elements with IDs
+      Object.keys(t).forEach(key => {
+        const element = document.getElementById(key);
+        if (element) {
+          element.textContent = t[key];
+        }
+      });
       
       // Update language switch button
-      document.getElementById('langSwitch').textContent = translations[lang].langSwitch;
+      document.getElementById('langSwitch').textContent = t.langSwitch;
       
-      // Update direction and font for Arabic
-      if (lang === 'ar') {
-        document.documentElement.dir = 'rtl';
-        document.documentElement.lang = 'ar';
-        document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
-      } else {
-        document.documentElement.dir = 'ltr';
-        document.documentElement.lang = 'en';
-        document.body.style.fontFamily = "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif";
+      // Update read more links
+      for (let i = 1; i <= 4; i++) {
+        const readMoreElement = document.getElementById(`readMore${i}`);
+        if (readMoreElement) {
+          readMoreElement.innerHTML = `${t.readMore} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>`;
+        }
+      }
+      
+      // Update watch links
+      for (let i = 1; i <= 2; i++) {
+        const watchElement = document.getElementById(`watch${i}`);
+        if (watchElement) {
+          watchElement.innerHTML = `${t.watch} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>`;
+        }
+      }
+      
+      // Update project links
+      const projectLinks = {
+        learnMore1: t.learnMore,
+        learnMore2: t.visitWebsite,
+        learnMore3: t.projectDetails,
+        learnMore4: t.viewPresentations
+      };
+      
+      Object.keys(projectLinks).forEach(key => {
+        const element = document.getElementById(key);
+        if (element) {
+          element.innerHTML = `${projectLinks[key]} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>`;
+        }
+      });
+      
+      // Update buy buttons
+      for (let i = 1; i <= 3; i++) {
+        const buyElement = document.getElementById(`buy${i}`);
+        if (buyElement) {
+          const platform = i === 2 ? 'NZMLY' : 'Gumroad';
+          buyElement.innerHTML = `${t.buy} ${platform} <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>`;
+        }
+      }
+      
+      // Update email button
+      const emailBtn = document.getElementById('emailBtn');
+      if (emailBtn) {
+        emailBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> ${t.emailBtn}`;
       }
     }
 
+    // Language switch functionality
     document.getElementById('langSwitch').addEventListener('click', () => {
       const newLang = currentLang === 'en' ? 'ar' : 'en';
       updateContent(newLang);
     });
 
-    // Smooth scrolling for navigation
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 80,
-            behavior: 'smooth'
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
           });
         }
       });
     });
+
+    // Add fade-in animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(section);
+    });
+
+    // Initialize
+    updateContent('en');
   </script>
 </body>
 </html>
-
