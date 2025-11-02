@@ -92,6 +92,10 @@
             padding: 0.5rem;
         }
 
+        header .mobile-menu {
+            display: none;
+        }
+
         /* Sections */
         section {
             padding: 4rem 0;
@@ -420,13 +424,7 @@
                 <a href="#" class="logo">Medo Hamdani</a>
                 
                 <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#blog">Blog</a>
-                    <a href="#videos">Videos</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#products">Products</a>
-                    <a href="#contact">Contact</a>
+
                     <button class="lang-switch" onclick="toggleLanguage()">ع</button>
                 </div>
 
@@ -438,13 +436,7 @@
             </nav>
 
             <div class="mobile-menu" id="mobileMenu">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#blog">Blog</a>
-                <a href="#videos">Videos</a>
-                <a href="#projects">Projects</a>
-                <a href="#products">Products</a>
-                <a href="#contact">Contact</a>
+
             </div>
         </div>
     </header>
@@ -815,6 +807,33 @@
 
         // Initialize
         updateContent('en');
+
+        // Dynamically generate nav links
+        const navLinks = [
+            { href: "#home", text: "Home" },
+            { href: "#about", text: "About" },
+            { href: "#blog", text: "Blog" },
+            { href: "#videos", text: "Videos" },
+            { href: "#projects", text: "Projects" },
+            { href: "#products", text: "Products" },
+            { href: "#contact", text: "Contact" }
+        ];
+
+        const desktopNav = document.querySelector('.nav-links');
+        const mobileNav = document.getElementById('mobileMenu');
+        const langSwitchButton = document.querySelector('.lang-switch');
+
+        navLinks.forEach(link => {
+            const a = document.createElement('a');
+            a.href = link.href;
+            a.textContent = link.text;
+            desktopNav.insertBefore(a, langSwitchButton);
+
+            const mobileA = document.createElement('a');
+            mobileA.href = link.href;
+            mobileA.textContent = link.text;
+            mobileNav.appendChild(mobileA);
+        });
     </script>
 </body>
 </html>
