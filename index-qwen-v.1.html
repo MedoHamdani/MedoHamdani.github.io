@@ -121,14 +121,6 @@
             color: #1e293b;
         }
 
-        #home p {
-            font-size: 1.4rem;
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 500;
-        }
-
         /* About Section */
         #about {
             background: white;
@@ -422,21 +414,24 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo">Medo Hamdani</a>
-                
-                <div class="nav-links">
-
-                    <button class="lang-switch" onclick="toggleLanguage()">ع</button>
+                <div class="nav-links" id="desktopNav">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#blog">Blog</a>
+                    <a href="#videos">Videos</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#products">Products</a>
+                    <a href="#contact">Contact</a>
+                    <button class="lang-switch" onclick="toggleLanguage()"> ع </button>
                 </div>
-
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M3 12h18M3 6h18M3 18h18"/>
                     </svg>
                 </button>
             </nav>
-
             <div class="mobile-menu" id="mobileMenu">
-
+                <!-- Will be populated by JS -->
             </div>
         </div>
     </header>
@@ -650,17 +645,9 @@
                     </svg>
                 </a>
             </div>
-            
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#blog">Blog</a>
-                <a href="#videos">Videos</a>
-                <a href="#projects">Projects</a>
-                <a href="#products">Products</a>
-                <a href="#contact">Contact</a>
+            <div class="footer-links" id="footerNav">
+                <!-- Will be populated by JS -->
             </div>
-            
             <p class="footer-text">
                 Design by <span id="footerName">Medo Hamdani</span> | 
                 <a href="https://bit.ly/BizMapper" target="_blank">Biz Mapper</a> v.1.1
@@ -669,125 +656,105 @@
     </footer>
 
     <script>
-        // Translation data
+        // Translation data (only nav + essential elements)
         const translations = {
             en: {
-                homeTitle: "Welcome to My Website",
-                homeDesc: "Discover my journey, projects, and connect with me.",
-                aboutTitle: "About Me",
-                blogTitle: "Blog",
-                videosTitle: "Videos",
-                projectsTitle: "Projects",
-                productsTitle: "Digital Products",
-                contactTitle: "Contact Me",
-                contactDesc: "Feel free to reach out to me through any of my social media channels or send me a message directly.",
-                emailBtn: "Send Email",
-                footerName: "Medo Hamdani",
-                blog1: "Life Lessons from Yemen",
-                blog2: "Japanese Anime & Culture",
-                blog3: "Personal Journey & Thoughts",
-                blog4: "Getting Married in Sydney",
-                video1: "Arabic OCR Overview 2022",
-                video2: "Podcast Episodes",
-                project1: "Arabic Digitalization Group",
-                project2: "Medo Auto Deals",
-                project3: "Smart Lift Innovation",
-                project4: "Petroleum Engineering Research",
-                product1: "Arabic Digital Books Collection",
-                product2: "Self-Development Guide",
-                product3: "Tech Career Bundle",
-                aboutPara1: "Mohammed AL-Hamdani also known on the web as Medo Hamdani is a multi talented, motivated self-starter with a passion for helping and motivating others, with strong analytical abilities for problem-solving and managing issues.",
-                aboutPara2: "He is a great team player with proven leadership and communication skills. He graduated from UCSI University as a Petroleum Engineer in 2015. During his time at the university, he volunteered in various clubs such as Junior Chamber International (JCI) as a member, Society of Petroleum Engineers (SPE) as president club, and UCSI Taekwondo Club as a vice president and the secretary of the Yemeni Student Association.",
-                aboutPara3: "Furthermore, he represented his university locally in South Asia SPE Student Chapter Conference in Malaysia, and internationally in the International Petroleum Technology Conference in China. Furthermore, he joined many workshops and seminars in various topics relevant and not relevant to the course of study. He was awarded the dean's award and got a bronze medal in the Korean Cyber International Genius Inventor Fair for his idea for the smart lift."
+                navHome: "Home",
+                navAbout: "About",
+                navBlog: "Blog",
+                navVideos: "Videos",
+                navProjects: "Projects",
+                navProducts: "Products",
+                navContact: "Contact",
+                langSwitch: " ع "
             },
             ar: {
-                homeTitle: "مرحباً بك في موقعي",
-                homeDesc: "اكتشف رحلتي، مشاريعي، واتصل بي.",
-                aboutTitle: "عنّي",
-                blogTitle: "المدونة",
-                videosTitle: "الفيديوهات",
-                projectsTitle: "المشاريع",
-                productsTitle: "المنتجات الرقمية",
-                contactTitle: "اتصل بي",
-                contactDesc: "لا تتردد في التواصل معي من خلال أي من قنوات التواصل الاجتماعي الخاصة بي أو أرسل لي رسالة مباشرة.",
-                emailBtn: "إرسال بريد إلكتروني",
-                footerName: "ميدو همداني",
-                blog1: "دروس الحياة من اليمن",
-                blog2: "الأنمي الياباني والثقافة",
-                blog3: "رحلتي الشخصية وأفكاري",
-                blog4: "الزواج في سيدني",
-                video1: "نظرة عامة على التعرف الضوئي على الحروف العربية 2022",
-                video2: "حلقات البودكاست",
-                project1: "مجموعة الرقمنة العربية",
-                project2: "صفقات مدو للسيارات",
-                project3: "ابتكار المصعد الذكي",
-                project4: "أبحاث هندسة البترول",
-                product1: "مجموعة الكتب الرقمية العربية",
-                product2: "دليل التطوير الذاتي",
-                product3: "حزمة مهارات التقنية",
-                aboutPara1: "محمد الهمداني، المعروف على الويب باسم ميدو همداني، هو شخص متعدد المواهب، متحفز ومبدئي ذاتي بشغف لمساعدة وتحفيز الآخرين، مع قدرات تحليلية قوية لحل المشكلات وإدارة القضايا.",
-                aboutPara2: "هو لاعب فريق رائع بمهارات قيادية وتواصل مثبتة. تخرج من جامعة UCSI كمهندس بترول في عام 2015. خلال فترة دراسته في الجامعة، تطوع في نوادي مختلفة مثل الغرفة الدولية للشباب (JCI) كعضو، وجمعية مهندسي البترول (SPE) كرئيس نادي، ونادي التايكوندو UCSI كنائب رئيس وأمين جمعية الطلاب اليمنيين.",
-                aboutPara3: "علاوة على ذلك، مثل جامعته محلياً في مؤتمر جمعية طلاب جنوب آسيا SPE في ماليزيا، ودولياً في المؤتمر الدولي لتقنية البترول في الصين. علاوة على ذلك، انضم إلى العديد من ورش العمل والدورات في مواضيع مختلفة ذات صلة وغير ذات صلة بالمسار الدراسي. حصل على جائزة العميد وحصل على ميدالية برونزية في معرض المخترعين العباقرة الدولي السيبراني الكوري لفكرته للمصعد الذكي."
+                navHome: "الرئيسية",
+                navAbout: "عني",
+                navBlog: "المدونة",
+                navVideos: "الفيديوهات",
+                navProjects: "المشاريع",
+                navProducts: "المنتجات",
+                navContact: "اتصل بي",
+                langSwitch: "EN"
             }
         };
 
         let currentLang = 'en';
 
-        function updateContent(lang) {
-            currentLang = lang;
-            const t = translations[lang];
-            
-            // Update document direction and language
-            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            document.documentElement.lang = lang;
-            
-            // Update all elements with IDs
-            Object.keys(t).forEach(key => {
-                const element = document.getElementById(key);
-                if (element) {
-                    element.textContent = t[key];
-                }
+        // Initialize navigation
+        function initNavigation() {
+            const desktopNav = document.getElementById('desktopNav');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const footerNav = document.getElementById('footerNav');
+            const langSwitchBtn = document.querySelector('.lang-switch');
+
+            // Define nav items
+            const navItems = [
+                { id: 'home', key: 'navHome' },
+                { id: 'about', key: 'navAbout' },
+                { id: 'blog', key: 'navBlog' },
+                { id: 'videos', key: 'navVideos' },
+                { id: 'projects', key: 'navProjects' },
+                { id: 'products', key: 'navProducts' },
+                { id: 'contact', key: 'navContact' }
+            ];
+
+            // Clear mobile and footer
+            mobileMenu.innerHTML = '';
+            footerNav.innerHTML = '';
+
+            // Update desktop nav and populate others
+            const desktopLinks = desktopNav.querySelectorAll('a[href^="#"]');
+            desktopLinks.forEach((link, index) => {
+                const item = navItems[index];
+                const text = translations[currentLang][item.key];
+                link.textContent = text;
+
+                // Mobile
+                const mobileLink = document.createElement('a');
+                mobileLink.href = link.href;
+                mobileLink.textContent = text;
+                mobileLink.addEventListener('click', () => mobileMenu.classList.remove('active'));
+                mobileMenu.appendChild(mobileLink);
+
+                // Footer
+                const footerLink = document.createElement('a');
+                footerLink.href = link.href;
+                footerLink.textContent = text;
+                footerNav.appendChild(footerLink);
             });
-            
-            // Update language switch button
-            const langSwitch = document.querySelector('.lang-switch');
-            if (langSwitch) {
-                langSwitch.textContent = lang === 'en' ? 'ع' : 'EN';
+
+            // Update language switch
+            if (langSwitchBtn) {
+                langSwitchBtn.textContent = translations[currentLang].langSwitch;
             }
         }
 
         function toggleLanguage() {
-            const newLang = currentLang === 'en' ? 'ar' : 'en';
-            updateContent(newLang);
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = currentLang;
+            initNavigation();
         }
 
         function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('active');
-            }
+            document.getElementById('mobileMenu').classList.toggle('active');
         }
 
-        // Smooth scrolling for navigation links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('mobileMenu')?.classList.remove('active');
                 }
             });
         });
 
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
+        // Fade-in on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -795,9 +762,8 @@
                     entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        // Observe all sections
         document.querySelectorAll('section').forEach(section => {
             section.style.opacity = '0';
             section.style.transform = 'translateY(20px)';
@@ -806,34 +772,10 @@
         });
 
         // Initialize
-        updateContent('en');
-
-        // Dynamically generate nav links
-        const navLinks = [
-            { href: "#home", text: "Home" },
-            { href: "#about", text: "About" },
-            { href: "#blog", text: "Blog" },
-            { href: "#videos", text: "Videos" },
-            { href: "#projects", text: "Projects" },
-            { href: "#products", text: "Products" },
-            { href: "#contact", text: "Contact" }
-        ];
-
-        const desktopNav = document.querySelector('.nav-links');
-        const mobileNav = document.getElementById('mobileMenu');
-        const langSwitchButton = document.querySelector('.lang-switch');
-
-        navLinks.forEach(link => {
-            const a = document.createElement('a');
-            a.href = link.href;
-            a.textContent = link.text;
-            desktopNav.insertBefore(a, langSwitchButton);
-
-            const mobileA = document.createElement('a');
-            mobileA.href = link.href;
-            mobileA.textContent = link.text;
-            mobileNav.appendChild(mobileA);
+        document.addEventListener('DOMContentLoaded', () => {
+            initNavigation();
         });
     </script>
 </body>
 </html>
+
