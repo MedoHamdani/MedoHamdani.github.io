@@ -15,20 +15,34 @@ backend:
 
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 site_url: https://medohamdani.github.io
+locale: ar
 
 media_folder: images/uploads
 public_folder: /images/uploads
 
 collections:
   - name: blog
-    label: Blog Posts
+    label: المدونة (Blog)
     folder: blog/_posts
     create: true
     extension: md
     format: frontmatter
     slug: "{{slug}}"
     fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Publish Date, name: date, widget: datetime }
-      - { label: Description, name: description, widget: string }
-      - { label: Body, name: body, widget: markdown }
+      - { label: العنوان (Title), name: title, widget: string }
+      - { label: تاريخ النشر (Date), name: date, widget: datetime, date_format: 'DD/MM/YYYY', format: 'DD/MM/YYYY' }
+      - { label: الوصف (Description), name: description, widget: string }
+      - { label: المحتوى (Body), name: body, widget: markdown }
+
+  - name: blog_ar
+    label: المدونة العربية (Arabic Blog)
+    folder: ar/blog/_posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { label: العنوان (Title), name: title, widget: string }
+      - { label: تاريخ النشر (Date), name: date, widget: datetime, date_format: 'DD/MM/YYYY', format: 'DD/MM/YYYY' }
+      - { label: الوصف (Description), name: description, widget: string }
+      - { label: المحتوى (Body), name: body, widget: markdown }
