@@ -1,0 +1,11 @@
+{
+  "name": "medohamdani.github.io",
+  "private": true,
+  "scripts": {
+    "build-posts": "node scripts/build-posts.js"
+  },
+  "devDependencies": {
+    "marked": "^15.0.0",
+    "js-yaml": "^4.1.0"
+  }
+}
