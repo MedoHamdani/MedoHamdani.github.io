@@ -31,17 +31,5 @@ collections:
       - { label: Title, name: title, widget: string }
       - { label: Publish Date, name: date, widget: datetime, date_format: 'DD/MM/YYYY', format: 'DD/MM/YYYY' }
       - { label: Description, name: description, widget: string }
-      - { label: Body, name: body, widget: markdown }
-
-  - name: blog_ar
-    label: Arabic Blog
-    folder: ar/blog/_posts
-    create: true
-    extension: md
-    format: frontmatter
-    slug: "{{slug}}"
-    fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Publish Date, name: date, widget: datetime, date_format: 'DD/MM/YYYY', format: 'DD/MM/YYYY' }
-      - { label: Description, name: description, widget: string }
+      - { label: Language, name: lang, widget: select, options: [{ label: English, value: en }, { label: العربية, value: ar }], default: ["en"] }
       - { label: Body, name: body, widget: markdown }

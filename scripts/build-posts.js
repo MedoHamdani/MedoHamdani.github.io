@@ -3,62 +3,61 @@ const path = require('path');
 const yaml = require('js-yaml');
 const { marked } = require('marked');
 
-const configs = [
-  {
-    postsDir: 'blog/_posts',
-    outDir: 'blog',
-    listingFile: 'blog.html',
-    lang: 'en',
-    dir: 'ltr',
-    stylePath: '../style.css',
-    scriptPath: '../script.js',
-    ogLocale: 'en_US',
-    siteName: 'Medo Hamdani',
-    nav: [
-      { href: '../index.html', label: 'Home' },
-      { href: '../about.html', label: 'About' },
-      { href: '../blog.html', label: 'Blog' },
-      { href: '../videos.html', label: 'Videos' },
-      { href: '../projects.html', label: 'Projects' },
-      { href: '../products.html', label: 'Products' },
-      { href: '../contact.html', label: 'Contact' },
-    ],
-    langSwitch: (slug) => ({ href: `../ar/blog/${slug}.html`, label: 'ع' }),
-    langSwitchMobile: (slug) => ({ href: `../ar/blog/${slug}.html`, label: 'العربية' }),
-    backLink: '← Back to Blog',
-    backHref: '../blog.html',
-    cardReadMore: 'Read More →',
-    cardTarget: '_self',
-    cardHref: (slug) => `blog/${slug}.html`,
-  },
-  {
-    postsDir: 'ar/blog/_posts',
-    outDir: 'ar/blog',
-    listingFile: 'ar/blog.html',
-    lang: 'ar',
-    dir: 'rtl',
-    stylePath: '../../ar/style.css',
-    scriptPath: '../../script.js',
-    ogLocale: 'ar_AR',
-    siteName: 'Medo Hamdani',
-    nav: [
-      { href: '../../ar/index.html', label: 'الرئيسية' },
-      { href: '../../ar/about.html', label: 'من أنا' },
-      { href: '../../ar/blog.html', label: 'المدونة' },
-      { href: '../../ar/videos.html', label: 'فيديو' },
-      { href: '../../ar/projects.html', label: 'المشاريع' },
-      { href: '../../ar/products.html', label: 'المنتجات' },
-      { href: '../../ar/contact.html', label: 'اتصل بي' },
-    ],
-    langSwitch: (slug) => ({ href: `../../blog/${slug}.html`, label: 'EN' }),
-    langSwitchMobile: (slug) => ({ href: `../../blog/${slug}.html`, label: 'English' }),
-    backLink: '← العودة إلى المدونة',
-    backHref: '../../ar/blog.html',
-    cardReadMore: 'اقرأ المقال →',
-    cardTarget: '_self',
-    cardHref: (slug) => `blog/${slug}.html`,
-  },
-];
+const POSTS_DIR = 'blog/_posts';
+
+const enCfg = {
+  outDir: 'blog',
+  listingFile: 'blog.html',
+  lang: 'en',
+  dir: 'ltr',
+  stylePath: '../style.css',
+  scriptPath: '../script.js',
+  ogLocale: 'en_US',
+  siteName: 'Medo Hamdani',
+  nav: [
+    { href: '../index.html', label: 'Home' },
+    { href: '../about.html', label: 'About' },
+    { href: '../blog.html', label: 'Blog' },
+    { href: '../videos.html', label: 'Videos' },
+    { href: '../projects.html', label: 'Projects' },
+    { href: '../products.html', label: 'Products' },
+    { href: '../contact.html', label: 'Contact' },
+  ],
+  backLink: '← Back to Blog',
+  backHref: '../blog.html',
+  cardReadMore: 'Read More →',
+  cardTarget: '_self',
+  cardHref: (slug) => `blog/${slug}.html`,
+  langSwitch: (slug) => ({ href: `../ar/blog/${slug}.html`, label: 'ع' }),
+  langSwitchMobile: (slug) => ({ href: `../ar/blog/${slug}.html`, label: 'العربية' }),
+};
+
+const arCfg = {
+  outDir: 'ar/blog',
+  listingFile: 'ar/blog.html',
+  lang: 'ar',
+  dir: 'rtl',
+  stylePath: '../../ar/style.css',
+  scriptPath: '../../script.js',
+  ogLocale: 'ar_AR',
+  siteName: 'Medo Hamdani',
+  nav: [
+    { href: '../../ar/index.html', label: 'الرئيسية' },
+    { href: '../../ar/about.html', label: 'من أنا' },
+    { href: '../../ar/blog.html', label: 'المدونة' },
+    { href: '../../ar/videos.html', label: 'فيديو' },
+    { href: '../../ar/projects.html', label: 'المشاريع' },
+    { href: '../../ar/products.html', label: 'المنتجات' },
+    { href: '../../ar/contact.html', label: 'اتصل بي' },
+  ],
+  backLink: '← العودة إلى المدونة',
+  backHref: '../../ar/blog.html',
+  cardReadMore: 'اقرأ المقال →',
+  cardTarget: '_self',
+  cardHref: (slug) => `blog/${slug}.html`,
+  langSwitch: (slug) => ({ href: `../../blog/${slug}.html`, label: 'EN' }),
+  langSwitchMobile: (slug) => ({ href: `../../blog/${slug}.html`, label: 'English' }),
+};
 
 const staticCards = {
   en: [
@@ -168,8 +167,7 @@ function buildCards(cfg, posts) {
                         <a href="${href}" target="${cfg.cardTarget}">${cfg.cardReadMore}</a>
                     </div>`;
   });
-  const staticKey = cfg.lang;
-  const staticList = (staticCards[staticKey] || []).map(c => {
+  const staticList = (staticCards[cfg.lang] || []).map(c => {
     return `                    <div class="card">
                         <h3>${c.title}</h3>
                         <p>${c.description}</p>
@@ -204,35 +202,42 @@ function updateListing(cfg, posts) {
   console.log(`Updated ${listingPath}`);
 }
 
-for (const cfg of configs) {
-  if (!fs.existsSync(cfg.postsDir)) {
-    fs.mkdirSync(cfg.postsDir, { recursive: true });
-    console.log(`Created ${cfg.postsDir}`);
-  }
-
-  const files = fs.readdirSync(cfg.postsDir).filter(f => f.endsWith('.md'));
-  const posts = [];
-
-  for (const file of files) {
-    const raw = fs.readFileSync(path.join(cfg.postsDir, file), 'utf8');
-    const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-    if (!match) {
-      console.warn(`Skipping ${file}: no front matter`);
-      continue;
-    }
-    const front = yaml.load(match[1]);
-    const body = match[2];
-    const title = front.title || file.replace('.md', '');
-    const description = front.description || '';
-    const slug = file.replace('.md', '');
-    const html = marked.parse(body);
-    const outPath = path.join(cfg.outDir, `${slug}.html`);
-    fs.writeFileSync(outPath, buildTemplate(cfg, title, description, slug, html));
-    console.log(`Generated ${outPath}`);
-    posts.push({ title, description, slug, date: front.date });
-  }
-
-  posts.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-
-  updateListing(cfg, posts);
+if (!fs.existsSync(POSTS_DIR)) {
+  fs.mkdirSync(POSTS_DIR, { recursive: true });
 }
+
+const files = fs.readdirSync(POSTS_DIR).filter(f => f.endsWith('.md'));
+const enPosts = [];
+const arPosts = [];
+
+for (const file of files) {
+  const raw = fs.readFileSync(path.join(POSTS_DIR, file), 'utf8');
+  const match = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!match) {
+    console.warn(`Skipping ${file}: no front matter`);
+    continue;
+  }
+  const front = yaml.load(match[1]);
+  const body = match[2];
+  const title = front.title || file.replace('.md', '');
+  const description = front.description || '';
+  const slug = file.replace('.md', '');
+  const lang = front.lang || 'en';
+  const cfg = lang === 'ar' ? arCfg : enCfg;
+  const html = marked.parse(body);
+  const outPath = path.join(cfg.outDir, `${slug}.html`);
+  fs.writeFileSync(outPath, buildTemplate(cfg, title, description, slug, html));
+  console.log(`Generated ${outPath}`);
+  const post = { title, description, slug, date: front.date || '2026-01-01' };
+  if (lang === 'ar') {
+    arPosts.push(post);
+  } else {
+    enPosts.push(post);
+  }
+}
+
+enPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+arPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+updateListing(enCfg, enPosts);
+updateListing(arCfg, arPosts);

@@ -6,7 +6,6 @@ on:
     branches: [main]
     paths:
       - 'blog/_posts/*.md'
-      - 'ar/blog/_posts/*.md'
       - 'scripts/build-posts.js'
       - 'package.json'
 
