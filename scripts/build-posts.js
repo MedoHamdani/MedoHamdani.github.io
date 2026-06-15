@@ -7,6 +7,7 @@ const configs = [
   {
     postsDir: 'blog/_posts',
     outDir: 'blog',
+    listingFile: 'blog.html',
     lang: 'en',
     dir: 'ltr',
     stylePath: '../style.css',
@@ -26,10 +27,14 @@ const configs = [
     langSwitchMobile: (slug) => ({ href: `../ar/blog/${slug}.html`, label: 'العربية' }),
     backLink: '← Back to Blog',
     backHref: '../blog.html',
+    cardReadMore: 'Read More →',
+    cardTarget: '_self',
+    cardHref: (slug) => `blog/${slug}.html`,
   },
   {
     postsDir: 'ar/blog/_posts',
     outDir: 'ar/blog',
+    listingFile: 'ar/blog.html',
     lang: 'ar',
     dir: 'rtl',
     stylePath: '../../ar/style.css',
@@ -49,8 +54,24 @@ const configs = [
     langSwitchMobile: (slug) => ({ href: `../../blog/${slug}.html`, label: 'English' }),
     backLink: '← العودة إلى المدونة',
     backHref: '../../ar/blog.html',
+    cardReadMore: 'اقرأ المقال →',
+    cardTarget: '_self',
+    cardHref: (slug) => `blog/${slug}.html`,
   },
 ];
+
+const staticCards = {
+  en: [
+    { title: 'Life Lessons from Yemen', description: 'Reflections on culture, resilience, and personal growth from my Yemeni roots.', href: 'http://lifelessonsyemen.blogspot.com.eg/', target: '_blank' },
+    { title: 'Japanese Anime & Culture', description: 'Exploring the fascinating world of Japanese anime and its cultural impact.', href: 'http://japaneseanimeyemen.blogspot.com.eg/', target: '_blank' },
+    { title: 'Personal Journey & Thoughts', description: 'My personal reflections, experiences, and insights on various topics.', href: 'https://medohamdani.blogspot.com', target: '_blank' },
+  ],
+  ar: [
+    { title: 'دروس الحياة من اليمن', description: 'تأملات حول الثقافة، المرونة، والنمو الشخصي من جذوري اليمنية.', href: 'http://lifelessonsyemen.blogspot.com.eg/', target: '_blank' },
+    { title: 'الأنمي الياباني والثقافة', description: 'استكشاف عالم الأنمي الياباني الرائع وتأثيره الثقافي.', href: 'http://japaneseanimeyemen.blogspot.com.eg/', target: '_blank' },
+    { title: 'رحلتي الشخصية وأفكاري', description: 'تأملاتي الشخصية، تجاربي، وآرائي حول مواضيع متنوعة.', href: 'https://medohamdani.blogspot.com', target: '_blank' },
+  ],
+};
 
 function buildTemplate(cfg, title, description, slug, content) {
   const navLinks = cfg.nav.map(l => `<a href="${l.href}">${l.label}</a>`).join('\n        ');
@@ -138,6 +159,51 @@ function buildTemplate(cfg, title, description, slug, content) {
 </html>`;
 }
 
+function buildCards(cfg, posts) {
+  const cards = posts.map(p => {
+    const href = typeof cfg.cardHref === 'function' ? cfg.cardHref(p.slug) : `blog/${p.slug}.html`;
+    return `                    <div class="card">
+                        <h3>${p.title}</h3>
+                        <p>${p.description}</p>
+                        <a href="${href}" target="${cfg.cardTarget}">${cfg.cardReadMore}</a>
+                    </div>`;
+  });
+  const staticKey = cfg.lang;
+  const staticList = (staticCards[staticKey] || []).map(c => {
+    return `                    <div class="card">
+                        <h3>${c.title}</h3>
+                        <p>${c.description}</p>
+                        <a href="${c.href}" target="${c.target || '_self'}">${cfg.cardReadMore}</a>
+                    </div>`;
+  });
+  return [...cards, ...staticList].join('\n');
+}
+
+function updateListing(cfg, posts) {
+  const listingPath = cfg.listingFile;
+  if (!fs.existsSync(listingPath)) {
+    console.warn(`Listing file not found: ${listingPath}`);
+    return;
+  }
+  let html = fs.readFileSync(listingPath, 'utf8');
+  const marker = '<!-- BLOG_CARDS -->';
+  const idx = html.indexOf(marker);
+  if (idx === -1) {
+    console.warn(`Marker not found in ${listingPath}`);
+    return;
+  }
+  const before = html.slice(0, idx + marker.length);
+  const afterStart = html.indexOf('</div>', idx);
+  if (afterStart === -1) {
+    console.warn(`Could not find closing </div> after marker in ${listingPath}`);
+    return;
+  }
+  const after = html.slice(afterStart);
+  const cards = buildCards(cfg, posts);
+  fs.writeFileSync(listingPath, `${before}\n${cards}\n${after}`);
+  console.log(`Updated ${listingPath}`);
+}
+
 for (const cfg of configs) {
   if (!fs.existsSync(cfg.postsDir)) {
     fs.mkdirSync(cfg.postsDir, { recursive: true });
@@ -145,11 +211,7 @@ for (const cfg of configs) {
   }
 
   const files = fs.readdirSync(cfg.postsDir).filter(f => f.endsWith('.md'));
-
-  if (files.length === 0) {
-    console.log(`No markdown files found in ${cfg.postsDir}/`);
-    continue;
-  }
+  const posts = [];
 
   for (const file of files) {
     const raw = fs.readFileSync(path.join(cfg.postsDir, file), 'utf8');
@@ -167,5 +229,10 @@ for (const cfg of configs) {
     const outPath = path.join(cfg.outDir, `${slug}.html`);
     fs.writeFileSync(outPath, buildTemplate(cfg, title, description, slug, html));
     console.log(`Generated ${outPath}`);
+    posts.push({ title, description, slug, date: front.date });
   }
+
+  posts.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+  updateListing(cfg, posts);
 }
