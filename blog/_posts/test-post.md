@@ -2,6 +2,7 @@
 title: "Test Post"
 date: 2026-06-15
 description: "Testing the CMS publishing pipeline"
+lang: en
 ---
 
 This is a test post to verify the markdown to HTML pipeline works.
