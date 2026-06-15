@@ -1,6 +1,7 @@
 name: Build Blog Posts
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
@@ -8,21 +9,22 @@ on:
       - 'ar/blog/_posts/*.md'
       - 'scripts/build-posts.js'
       - 'package.json'
-      - 'package-lock.json'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm ci
+      - run: npm install
       - run: npm run build-posts
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Auto-build blog posts from markdown"
-          file_pattern: blog/*.html
+          file_pattern: blog/*.html ar/blog/*.html
