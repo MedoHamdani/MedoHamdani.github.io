@@ -23,10 +23,10 @@ collections:
   - name: blog
     label: Blog Posts
     folder: blog
-    create: false
+    create: true
     extension: html
     format: raw
     editor:
       preview: false
     fields:
-      - { label: Body, name: body, widget: text }
+      - { label: Body, name: body, widget: text, default: "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>New Post</title>\n  <link rel=\"stylesheet\" href=\"/style.css\">\n</head>\n<body>\n  \x3c!-- NAV --\x3e\n  <header class=\"glass-nav\">\n    <nav class=\"container nav-flex\">\n      <a href=\"/\" class=\"nav-logo\">MedoHamdani</a>\n      <button class=\"mobile-menu-btn\" aria-label=\"Toggle menu\">☰</button>\n      <ul class=\"nav-links\">\n        <li><a href=\"/\">Home</a></li>\n        <li><a href=\"/blog.html\">Blog</a></li>\n        <li><a href=\"/about.html\">About</a></li>\n        <li><a href=\"/contact.html\">Contact</a></li>\n      </ul>\n    </nav>\n  </header>\n\n  <main class=\"container\">\n    <article>\n      <h1>New Post</h1>\n      <p>Write your content here.</p>\n    </article>\n  </main>\n\n  \x3c!-- FOOTER --\x3e\n  <footer class=\"footer\">\n    <div class=\"container\">\n      <p>&copy; 2026 MedoHamdani. Biz Mapper v.1.2</p>\n    </div>\n  </footer>\n</body>\n</html>" }
