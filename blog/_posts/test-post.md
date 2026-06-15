@@ -9,3 +9,4 @@ This is a test post to verify the markdown to HTML pipeline works.
 - Step 1: Commit markdown
 - Step 2: GitHub Action builds HTML
 - Step 3: Site updates
+- Step 4: Success!
