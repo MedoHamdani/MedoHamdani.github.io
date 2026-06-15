@@ -34,7 +34,7 @@
         },
         "datePublished": "2025-01-01",
         "inLanguage": "ar",
-        "image": "https://medohamdani.github.io/Images/foot-images/normal-arch.jpg"
+        "image": "https://medohamdani.github.io/Images/foot-images/male-right-foot-1.jpg"
     }
     </script>
 </head>
@@ -47,10 +47,30 @@
         <a href="../index.html">الرئيسية</a>
         <a href="../about.html">عنّي</a>
         <a href="../blog.html">المدونة</a>
+        <a href="../opensource/index.html">المصدر المفتوح</a>
+        <a href="../videos.html">الفيديوهات</a>
+        <a href="../projects.html">المشاريع</a>
+        <a href="../products.html">المنتجات</a>
         <a href="../contact.html">اتصل بي</a>
         <a href="../../blog/flat-foot.html" class="lang-switch">EN</a>
       </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
     </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">الرئيسية</a>
+      <a href="../about.html">عنّي</a>
+      <a href="../blog.html">المدونة</a>
+      <a href="../opensource/index.html">المصدر المفتوح</a>
+      <a href="../videos.html">الفيديوهات</a>
+      <a href="../projects.html">المشاريع</a>
+      <a href="../products.html">المنتجات</a>
+      <a href="../contact.html">اتصل بي</a>
+      <a href="../../blog/flat-foot.html">English</a>
+    </div>
   </div>
 </header>
 <main>
@@ -60,8 +80,16 @@
     <h1>القدم المسطحة والركبة: العلاقة الخفية وكيفية العلاج</h1>
     <p style="color:#64748b;margin-bottom:2rem">القدم المسطحة وانهيار القوس ليست مجرد مشكلة في القدم — بل يمكن أن تسبب سلسلة من التفاعلات تنتهي بألم الركبة. في هذا الدليل، ستتعرف بالضبط على كيف يحدث ذلك، وماذا يمكنك فعله حيال ذلك بتمارين وتقويمات وتغييرات بسيطة في نمط الحياة.</p>
 
-    <img src="../../Images/foot-images/normal-arch.jpg" alt="مقارنة بصرية بين شكل القدم الطبيعي والقدم المسطحة (pes planus)" class="featured-image">
-    <div class="image-caption">الفرق بين القوس الطبيعي والقدم المسطحة: كيف ينهار القوس الطولي الإنسي في pes planus.</div>
+    <div class="image-compare">
+      <figure>
+        <img src="../../Images/foot-images/male-right-foot-1.jpg" alt="قوس القدم الطبيعي يظهر بوضوح">
+        <figcaption>قوس القدم الطبيعي — القوس الطولي الإنسي مرتفع بوضوح.</figcaption>
+      </figure>
+      <figure>
+        <img src="../../Images/foot-images/flatfoot.jpg" alt="قدم مسطحة مع انهيار القوس">
+        <figcaption>القدم المسطحة (pes planus) — انهار القوس وأصبح يلامس الأرض.</figcaption>
+      </figure>
+    </div>
 
     <h2>ما هي القدم المسطحة؟</h2>
     <p>تُعرف القدم المسطحة أيضاً باسم <strong>pes planus</strong> أو <strong>fallen arches</strong>. هي حالة ينهار فيها قوس القدم، مما يسبب تلامس باطن القدم بالكامل مع الأرض. بينما لا يعاني البعض من أي ألم، فإن الكثيرين يطورون أعراضاً تمتد للأعلى من القدمين إلى الركبتين والوركين والظهر السفلي.</p>
@@ -69,8 +97,8 @@
     <h2>كيف تسبب القدم المسطحة ألم الركبة</h2>
     <p>عندما ينهار القوس، تدور القدم للداخل بشكل مفرط — وهي حركة تسمى <strong>overpronation</strong>. هذا الدوران يلوي عظمة الظنبوب (الساق)، مما يغير الزاوية التي تنثني عندها الركبة وتمتص الصدمات.</p>
 
-    <img src="../../Images/foot-images/flat-arch.jpg" alt="رسم طبي يظهر تشوه القدم المسطحة مع انهيار القوس الطولي الإنسي" class="featured-image">
-    <div class="image-caption">Pes planus: يلمس القوس الطولي الإنسي الأرض أثناء مرحلة الوقوف.</div>
+    <img src="../../Images/foot-images/adult-flatfoot.jpg" alt="قدم مسطحة لشخص بالغ تظهر انهيار القوس الإنسي" class="featured-image">
+    <div class="image-caption">القدم المسطحة للبالغين (pes planus) — لاحظ فقدان القوس الطولي الإنسي.<br><small>الصورة: ويكيميديا كومنز (CC BY-SA 3.0)</small></div>
 
     <p>مع مرور الوقت، يمكن أن يؤدي ذلك إلى:</p>
     <ul>
@@ -163,6 +191,10 @@
 
     <footer style="margin-top:4rem">
       <p>© ميدو همداني | <a href="../blog.html" style="color:#60a5fa">العودة للمدونة</a></p>
+      <p class="footer-text" style="margin-top:1rem;color:#94a3b8;font-size:0.85rem">
+        تصميم بواسطة ميدو همداني |
+        <a href="https://bit.ly/BizMapper" target="_blank" style="color:#818cf8">Biz Mapper</a> v.1.2
+      </p>
     </footer>
   </div>
 </article>

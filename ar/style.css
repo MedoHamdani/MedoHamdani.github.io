@@ -479,6 +479,48 @@ footer::before {
     margin-bottom: 2rem;
     font-size: 1.1rem;
 }
+/* Article Images */
+.featured-image {
+    width: 100%;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.image-caption {
+    color: #64748b;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: -0.5rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+.image-compare {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+.image-compare figure {
+    flex: 1;
+    margin: 0;
+}
+.image-compare img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+.image-compare figcaption {
+    color: #64748b;
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+@media (max-width: 640px) {
+    .image-compare {
+        flex-direction: column;
+    }
+}
+
 @media (max-width: 768px) {
     .nav-links {
         display: none;

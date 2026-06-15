@@ -7,13 +7,13 @@
     <title>برامج حرة ومفتوحة المصدر | ميدو همداني</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <meta name="description" content="استكشف البرامج الحرة ومفتوحة المصدر بما فيها كريتا، بلندر وإنكسكيب.">
-    <meta name="keywords" content="مصدر مفتوح, كريتا, بلندر, إنكسكيب, برامج مجانية">
+    <meta name="description" content="استكشف البرامج الحرة ومفتوحة المصدر بما فيها كريتا، بلندر، إنكسكيب وجيمب.">
+    <meta name="keywords" content="مصدر مفتوح, كريتا, بلندر, إنكسكيب, جيمب, برامج مجانية">
     <meta name="author" content="ميدو همداني">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://medohamdani.github.io/ar/opensource/index.html">
     <meta property="og:title" content="برامج حرة ومفتوحة المصدر | ميدو همداني">
-    <meta property="og:description" content="استكشف البرامج الحرة ومفتوحة المصدر بما فيها كريتا، بلندر وإنكسكيب.">
+    <meta property="og:description" content="استكشف البرامج الحرة ومفتوحة المصدر بما فيها كريتا، بلندر، إنكسكيب وجيمب.">
     <meta property="og:image" content="https://medohamdani.github.io/favicon.svg">
     <meta property="og:url" content="https://medohamdani.github.io/ar/opensource/index.html">
     <meta property="og:type" content="website">
@@ -42,10 +42,30 @@
                     <a href="../index.html">الرئيسية</a>
                     <a href="../about.html">عنّي</a>
                     <a href="../blog.html">المدونة</a>
+                    <a href="index.html">المصدر المفتوح</a>
+                    <a href="../videos.html">الفيديوهات</a>
+                    <a href="../projects.html">المشاريع</a>
+                    <a href="../products.html">المنتجات</a>
                     <a href="../contact.html">اتصل بي</a>
                     <a href="../../opensource/index.html" class="lang-switch">EN</a>
                 </div>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
             </nav>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="../index.html">الرئيسية</a>
+                <a href="../about.html">عنّي</a>
+                <a href="../blog.html">المدونة</a>
+                <a href="index.html">المصدر المفتوح</a>
+                <a href="../videos.html">الفيديوهات</a>
+                <a href="../projects.html">المشاريع</a>
+                <a href="../products.html">المنتجات</a>
+                <a href="../contact.html">اتصل بي</a>
+                <a href="../../opensource/index.html">English</a>
+            </div>
         </div>
     </header>
 
@@ -57,17 +77,22 @@
                     <div class="card">
                         <h3>Krita</h3>
                         <p>برنامج رسم رقمي مجاني ومفتوح المصدر قوي ومناسب للرسامين والمصممين.</p>
-                        <a href="#" target="_blank">اقرأ المقال →</a>
+                        <a href="krita.html" target="_blank">اقرأ المقال →</a>
                     </div>
                     <div class="card">
                         <h3>Blender</h3>
                         <p>أداة إنشاء ثلاثية الأبعاد مفتوحة المصدر تشمل النمذجة والريندر والأنيميشن.</p>
-                        <a href="#" target="_blank">اقرأ المقال →</a>
+                        <a href="blender.html" target="_blank">اقرأ المقال →</a>
                     </div>
                     <div class="card">
                         <h3>Inkscape</h3>
                         <p>محرر رسومات شعاعية مفتوح المصدر مشابه لـ Adobe Illustrator.</p>
-                        <a href="#" target="_blank">اقرأ المقال →</a>
+                        <a href="inkscape.html" target="_blank">اقرأ المقال →</a>
+                    </div>
+                    <div class="card">
+                        <h3>GIMP</h3>
+                        <p>برنامج معالجة صور مجاني ومفتوح المصدر لتحرير الصور والتصميم.</p>
+                        <a href="gimp.html" target="_blank">اقرأ المقال →</a>
                     </div>
                 </div>
             </div>
@@ -77,6 +102,10 @@
     <footer>
         <div class="container">
             <p>© ميدو همداني</p>
+            <p class="footer-text" style="margin-top:0.5rem">
+                تصميم بواسطة ميدو همداني |
+                <a href="https://bit.ly/BizMapper" target="_blank" style="color:#818cf8">Biz Mapper</a> v.1.2
+            </p>
         </div>
     </footer>
 <script src="../script.js"></script>
