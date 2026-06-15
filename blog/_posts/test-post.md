@@ -11,3 +11,4 @@ This is a test post to verify the markdown to HTML pipeline works.
 - Step 3: Site updates
 - Step 4: Success!
 - Step 5: Blog listing auto-updates
+- Step 6: Done
