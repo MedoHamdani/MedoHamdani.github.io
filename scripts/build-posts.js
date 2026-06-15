@@ -18,12 +18,12 @@ const enCfg = {
     { href: '../index.html', label: 'Home' },
     { href: '../about.html', label: 'About' },
     { href: '../blog.html', label: 'Blog' },
-    { href: '../opensource/index.html', label: 'Open Source' },
     { href: '../videos.html', label: 'Videos' },
     { href: '../projects.html', label: 'Projects' },
     { href: '../products.html', label: 'Products' },
     { href: '../contact.html', label: 'Contact' },
   ],
+  opensource: { href: '../opensource/index.html', label: 'Open Source' },
   backLink: '← Back to Blog',
   backHref: '../blog.html',
   cardReadMore: 'Read More →',
@@ -46,12 +46,12 @@ const arCfg = {
     { href: '../../ar/index.html', label: 'الرئيسية' },
     { href: '../../ar/about.html', label: 'من أنا' },
     { href: '../../ar/blog.html', label: 'المدونة' },
-    { href: '../../ar/opensource/index.html', label: 'المصدر المفتوح' },
     { href: '../../ar/videos.html', label: 'فيديو' },
     { href: '../../ar/projects.html', label: 'المشاريع' },
     { href: '../../ar/products.html', label: 'المنتجات' },
     { href: '../../ar/contact.html', label: 'اتصل بي' },
   ],
+  opensource: { href: '../../ar/opensource/index.html', label: 'المصدر المفتوح' },
   backLink: '← العودة إلى المدونة',
   backHref: '../../ar/blog.html',
   cardReadMore: 'اقرأ المقال →',
@@ -75,10 +75,21 @@ const staticCards = {
 };
 
 function buildTemplate(cfg, title, description, slug, content) {
-  const navLinks = cfg.nav.map(l => `<a href="${l.href}">${l.label}</a>`).join('\n        ');
   const ls = cfg.langSwitch(slug);
   const lsm = cfg.langSwitchMobile(slug);
   const date = new Date().toISOString().split('T')[0];
+
+  const navLinks = cfg.nav.map(l => {
+    if (l.label === 'Blog' || l.label === 'المدونة') {
+      return `<div class="nav-item-dropdown">\n          <a href="${l.href}" class="dropdown-trigger">${l.label}</a>\n          <div class="dropdown-menu">\n            <a href="${cfg.opensource.href}">${cfg.opensource.label}</a>\n          </div>\n        </div>`;
+    }
+    return `<a href="${l.href}">${l.label}</a>`;
+  }).join('\n        ');
+
+  const mobExtra = [...cfg.nav];
+  const blogIdx = mobExtra.findIndex(l => l.label === 'Blog' || l.label === 'المدونة');
+  if (blogIdx !== -1) mobExtra.splice(blogIdx + 1, 0, cfg.opensource);
+  const mobileNav = mobExtra.map(l => `<a href="${l.href}">${l.label}</a>`).join('\n      ');
 
   return `<!DOCTYPE html>
 <html lang="${cfg.lang}" dir="${cfg.dir}">
@@ -134,7 +145,7 @@ function buildTemplate(cfg, title, description, slug, content) {
       </button>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
-      ${cfg.nav.map(l => `<a href="${l.href}">${l.label}</a>`).join('\n      ')}
+      ${mobileNav}
       <a href="${lsm.href}">${lsm.label}</a>
     </div>
   </div>
