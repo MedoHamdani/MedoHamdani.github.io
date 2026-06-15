@@ -18,6 +18,7 @@ const enCfg = {
     { href: '../index.html', label: 'Home' },
     { href: '../about.html', label: 'About' },
     { href: '../blog.html', label: 'Blog' },
+    { href: '../opensource/index.html', label: 'Open Source' },
     { href: '../videos.html', label: 'Videos' },
     { href: '../projects.html', label: 'Projects' },
     { href: '../products.html', label: 'Products' },
@@ -45,6 +46,7 @@ const arCfg = {
     { href: '../../ar/index.html', label: 'الرئيسية' },
     { href: '../../ar/about.html', label: 'من أنا' },
     { href: '../../ar/blog.html', label: 'المدونة' },
+    { href: '../../ar/opensource/index.html', label: 'المصدر المفتوح' },
     { href: '../../ar/videos.html', label: 'فيديو' },
     { href: '../../ar/projects.html', label: 'المشاريع' },
     { href: '../../ar/products.html', label: 'المنتجات' },
@@ -122,6 +124,7 @@ function buildTemplate(cfg, title, description, slug, content) {
       <a href="${cfg.nav[0].href}" class="logo">Medo Hamdani</a>
       <div class="nav-links">
         ${navLinks}
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
         <a href="${ls.href}" class="lang-switch">${ls.label}</a>
       </div>
       <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
