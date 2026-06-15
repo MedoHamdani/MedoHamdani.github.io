@@ -184,19 +184,16 @@ function updateListing(cfg, posts) {
     return;
   }
   let html = fs.readFileSync(listingPath, 'utf8');
-  const marker = '<!-- BLOG_CARDS -->';
-  const idx = html.indexOf(marker);
-  if (idx === -1) {
-    console.warn(`Marker not found in ${listingPath}`);
+  const startMarker = '<!-- BLOG_CARDS -->';
+  const endMarker = '<!-- BLOG_CARDS_END -->';
+  const startIdx = html.indexOf(startMarker);
+  const endIdx = html.indexOf(endMarker);
+  if (startIdx === -1 || endIdx === -1) {
+    console.warn(`Markers not found in ${listingPath}`);
     return;
   }
-  const before = html.slice(0, idx + marker.length);
-  const afterStart = html.indexOf('</div>', idx);
-  if (afterStart === -1) {
-    console.warn(`Could not find closing </div> after marker in ${listingPath}`);
-    return;
-  }
-  const after = html.slice(afterStart);
+  const before = html.slice(0, startIdx + startMarker.length);
+  const after = html.slice(endIdx);
   const cards = buildCards(cfg, posts);
   fs.writeFileSync(listingPath, `${before}\n${cards}\n${after}`);
   console.log(`Updated ${listingPath}`);
