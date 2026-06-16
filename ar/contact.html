@@ -80,7 +80,23 @@
                 <h1 class="section-title">اتصل بي</h1>
                 <div class="contact-content">
                     <p>لا تتردد في التواصل معي من خلال أي من قنوات التواصل الاجتماعي الخاصة بي أو أرسل لي رسالة مباشرة.</p>
-                    <a href="mailto:contact@medohamdani.com" class="btn">إرسال بريد إلكتروني</a>
+                    <form action="https://formsubmit.co/medo300@gmail.com" method="POST" class="contact-form">
+                        <input type="hidden" name="_next" value="https://medohamdani.github.io/ar/contact.html">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="الاسم" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="mobile" placeholder="رقم الجوال">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="كيف تود أن نتعاون؟" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">إرسال الرسالة</button>
+                    </form>
                 </div>
             </div>
         </section>

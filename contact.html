@@ -79,7 +79,23 @@
                 <h1 class="section-title">Contact Me</h1>
                 <div class="contact-content">
                     <p>Feel free to reach out to me through any of my social media channels or send me a message directly.</p>
-                    <a href="mailto:contact@medohamdani.com" class="btn">Send Email</a>
+                    <form action="https://formsubmit.co/medo300@gmail.com" method="POST" class="contact-form">
+                        <input type="hidden" name="_next" value="https://medohamdani.github.io/contact.html">
+                        <input type="hidden" name="_template" value="table">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="mobile" placeholder="Mobile Number">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="How do you want us to collaborate?" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
                 </div>
             </div>
         </section>
