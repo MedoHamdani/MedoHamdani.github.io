@@ -12,6 +12,9 @@ body {
     color: #1e293b;
     background: #f8fafc;
 }
+[dir="rtl"] body {
+    font-family: 'Traditional Arabic', 'Inter', sans-serif;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
