@@ -247,6 +247,22 @@ section {
     margin-bottom: 1.5rem;
     line-height: 1.7;
 }
+.blog-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+.blog-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+[dir="rtl"] .blog-meta {
+    flex-direction: row-reverse;
+}
 .card a {
     color: #4f46e5;
     text-decoration: none;
@@ -816,6 +832,9 @@ footer::before {
 }
 [data-theme="dark"] .card p {
     color: #94a3b8;
+}
+[data-theme="dark"] .blog-meta {
+    color: #64748b;
 }
 [data-theme="dark"] .product-card {
     background: #1e293b;
