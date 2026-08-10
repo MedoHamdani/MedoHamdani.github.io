@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>uBlock Origin | Medo Hamdani</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="../style.css">
+<meta name="description" content="uBlock Origin is a free and open-source browser extension for efficient content filtering — blocking ads, trackers, and malware domains while using minimal CPU and memory.">
+<meta name="keywords" content="uBlock Origin, ad blocker, open source, content filter, tracker blocker, browser extension, privacy, GPL">
+<meta name="author" content="Medo Hamdani">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://medohamdani.github.io/opensource/ublock-origin.html">
+<meta property="og:title" content="uBlock Origin: Efficient Open Source Content Blocker">
+<meta property="og:description" content="uBlock Origin is a free and open-source browser extension for efficient content filtering — blocking ads, trackers, and malware domains while using minimal CPU and memory.">
+<meta property="og:image" content="https://medohamdani.github.io/favicon.svg">
+<meta property="og:url" content="https://medohamdani.github.io/opensource/ublock-origin.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="uBlock Origin: Efficient Open Source Content Blocker">
+<meta name="twitter:description" content="uBlock Origin is a free and open-source browser extension for efficient content filtering — blocking ads, trackers, and malware domains while using minimal CPU and memory.">
+<meta name="twitter:image" content="https://medohamdani.github.io/favicon.svg">
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "uBlock Origin: Efficient Open Source Content Blocker",
+    "description": "uBlock Origin is a free and open-source browser extension for efficient content filtering — blocking ads, trackers, and malware domains while using minimal CPU and memory.",
+    "author": {
+        "@type": "Person",
+        "name": "Medo Hamdani"
+    },
+    "datePublished": "2026-08-10"
+}
+</script>
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav>
+      <a href="../index.html" class="logo">Medo Hamdani</a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="../about.html">About</a>
+        <div class="nav-item-dropdown">
+            <a href="../blog.html" class="dropdown-trigger">Blog</a>
+            <div class="dropdown-menu">
+                <a href="index.html">Open Source</a>
+                <a href="../videos.html">Videos</a>
+            </div>
+        </div>
+        <a href="../projects.html">Projects</a>
+        <a href="../products.html">Products</a>
+        <a href="../contact.html">Contact</a>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">&#9728;&#65039;</button>
+        <a href="../ar/opensource/ublock-origin.html" class="lang-switch">ع</a>
+      </div>
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../blog.html">Blog</a>
+      <a href="index.html">Open Source</a>
+      <a href="../videos.html">Videos</a>
+      <a href="../projects.html">Projects</a>
+      <a href="../products.html">Products</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../ar/opensource/ublock-origin.html">العربية</a>
+    </div>
+  </div>
+</header>
+<main>
+<div class="container" style="margin-top:2rem">
+    <article class="blog-article">
+        <div class="article-header" style="background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);">
+            <span class="category-badge">Privacy &amp; Browsing</span>
+        </div>
+        <div class="article-content">
+            <div class="article-meta">
+                <span><i class="fa-regular fa-calendar"></i> August 10, 2026</span>
+                <span><i class="fa-regular fa-user"></i> By Medo Hamdani</span>
+            </div>
+            <h2 class="article-title">uBlock Origin: Efficient Open Source Content Blocker</h2>
+            <a href="index.html" class="back-link" style="margin-bottom:1.5rem;display:inline-block">← Back to Open Source</a>
+
+<h2>Overview</h2>
+    <p>uBlock Origin is a free and open-source browser extension that performs efficient content filtering — blocking ads, trackers, coin miners, and malware domains without draining your computer's resources. Created by Raymond Hill in 2014 as a successor to the original uBlock project, it was designed from the start with a performance-first philosophy: unlike many ad blockers, it uses very little CPU and memory, making it a favourite among privacy-conscious users on both powerful desktops and low-end machines.</p>
+    <p>The extension works on Firefox, Chrome, Edge, Opera, and Brave, and is licensed under the GPLv3 — a true community project with hundreds of contributors. What sets uBlock Origin apart from commercial blockers is its transparency: every filter rule is openly maintained in public filter lists, and the software never monetises your blocking decisions, never sells data, and never whitelists advertisers for payment. When uBlock Origin blocks something, it does so solely because you asked it to.</p>
+
+    <h2>Key Features</h2>
+    <ul>
+      <li><strong>Efficient Content Filtering:</strong> Uses the browser's native content-blocking engine (uBlock Origin uses its own network filtering engine) to intercept requests before they consume bandwidth, with a memory footprint measured in tens of megabytes rather than hundreds.</li>
+      <li><strong>Multiple Filter Lists:</strong> Built-in support for EasyList, EasyPrivacy, uBlock filters, Peter Lowe's list, and regional lists for dozens of languages — all updatable from within the extension without any account or cloud service.</li>
+      <li><strong>Cosmetic Filtering &amp; Element Picker:</strong> Beyond network-level blocking, it strips unwanted elements (banners, popups, overlays) from pages. An on-page element picker lets you click any element and remove it with a custom rule, no programming knowledge required.</li>
+      <li><strong>Dynamic Filtering:</strong> Advanced users get a per-site matrix to control exactly which domains may or may not load resources, scripts, and frames from third parties — a much more precise tool than a simple on/off switch.</li>
+      <li><strong>Privacy &amp; Security Protections:</strong> Blocks trackers, fingerprinting scripts, and known malware/phishing domains through threat intelligence lists, protecting you even on malicious pages before a trip to the site begins.</li>
+      <li><strong>Dashboard &amp; Statistics:</strong> A detailed statistics panel shows how many requests were blocked across every opened page, giving you a clear picture of what the web was trying to load onto your machine.</li>
+    </ul>
+
+    <h2>Why Choose uBlock Origin?</h2>
+    <p>Performance is the headline. Independent benchmarks consistently show uBlock Origin using less CPU and memory than nearly every competing blocker, which translates directly into faster page loads, cooler laptops, and longer battery life. The extension's creators take this seriously enough that performance regressions are treated as bugs — a stark contrast to commercial blockers that bundle "acceptable ads" programs and revenue-sharing deals by default.</p>
+    <p>Trust is the second reason. uBlock Origin has no accounts, no telemetry, no "premium" tier, and no sponsored whitelisting. Its source code is openly reviewed, its filter lists are community-maintained, and its funding comes from donations rather than advertisers. That combination — honest by design, efficient by engineering, and powerful in practice — makes uBlock Origin the default recommendation for anyone who wants a cleaner, faster, and safer web without giving anything up in return.</p>
+
+    <h2>Get Started</h2>
+    <p>Install from the official add-on stores: <a href="https://addons.mozilla.org/firefox/addon/ublock-origin/" target="_blank">Firefox</a> | <a href="https://chrome.google.com/webstore/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm" target="_blank">Chrome</a></p>
+
+    <div class="highlight-box">
+      <p>uBlock Origin is free and open-source. No donations required, no data sold.</p>
+    </div>
+
+    <footer style="margin-top:4rem">
+      <p>&copy; Medo Hamdani | <a href="index.html" style="color:#60a5fa">Back to Open Source</a></p>
+      <p class="footer-text" style="margin-top:1rem;color:#94a3b8;font-size:0.85rem">
+        Design by Medo Hamdani |
+        <a href="https://bit.ly/BizMapper" target="_blank" style="color:#818cf8">Biz Mapper</a> v.1.2
+      </p>
+    </footer>
+
+        </div>
+    </article>
+</div>
+</main>
+<script src="../script.js"></script>
+</body>
+</html>
