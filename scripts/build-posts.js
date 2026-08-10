@@ -161,7 +161,7 @@ function buildTemplate(cfg, title, description, slug, content) {
       <p>© Medo Hamdani | <a href="${cfg.backHref}" style="color:#60a5fa">${cfg.backLink}</a></p>
       <p class="footer-text" style="margin-top:1rem;color:#94a3b8;font-size:0.85rem">
         Design by Medo Hamdani |
-        <a href="https://bit.ly/BizMapper" target="_blank" style="color:#818cf8">Biz Mapper</a> v.1.4
+        <a href="https://bit.ly/BizMapper" target="_blank" style="color:#818cf8">Biz Mapper</a> v.1.5
       </p>
     </footer>
   </div>
