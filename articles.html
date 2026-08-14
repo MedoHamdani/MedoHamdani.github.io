@@ -79,6 +79,14 @@
         <section>
             <div class="container">
                 <h1 class="section-title">Articles</h1>
+                <div class="article-search">
+                    <button class="search-toggle" onclick="toggleSearch()" aria-label="Search articles">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <div class="search-box" id="searchBox">
+                        <input type="text" id="searchInput" placeholder="Search articles..." oninput="filterArticles()" aria-label="Search articles">
+                    </div>
+                </div>
                 <div class="cards-grid">
                     <div class="card">
                         <div class="blog-meta">
@@ -134,7 +142,17 @@
                         <p>A practical guide through marriage and divorce paperwork in Egypt — from embassy requests and the real estate registry to attestation, translation, and residency, written from personal experience.</p>
                         <a href="blog/marriage-divorce-egypt.html">Read More →</a>
                     </div>
+                    <div class="card">
+                        <div class="blog-meta">
+                            <span class="blog-date">March 12, 2022</span>
+                            <span class="blog-author">By Mohammed Taher Hamdani</span>
+                        </div>
+                        <h3>Happiness Hormones</h3>
+                        <p>An overview of the four happiness hormones — dopamine, oxytocin, endorphins, and serotonin — and how to boost them in your daily life.</p>
+                        <a href="blog/happiness-hormones.html">Read More →</a>
+                    </div>
                 </div>
+                <p class="search-empty" id="searchEmpty">No articles found. Try a different keyword.</p>
             </div>
         </section>
     </main>
@@ -144,7 +162,7 @@
             <p>© Medo Hamdani</p>
             <p class="footer-text" style="margin-top:0.5rem">
                 Design by Medo Hamdani |
-                <a href="https://bit.ly/BizMapper" target="_blank" style="color:#818cf8">Biz Mapper</a> v.1.6
+                <a href="https://bit.ly/BizMapper" target="_blank" style="color:#818cf8">Biz Mapper</a> v.1.7
             </p>
         </div>
     </footer>

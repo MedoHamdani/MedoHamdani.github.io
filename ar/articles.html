@@ -79,6 +79,14 @@
         <section>
             <div class="container">
                 <h1 class="section-title">المقالات</h1>
+                <div class="article-search">
+                    <button class="search-toggle" onclick="toggleSearch()" aria-label="البحث في المقالات">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <div class="search-box" id="searchBox">
+                        <input type="text" id="searchInput" placeholder="ابحث في المقالات..." oninput="filterArticles()" aria-label="البحث في المقالات">
+                    </div>
+                </div>
                 <div class="cards-grid">
                     <div class="card">
                         <div class="blog-meta">
@@ -125,7 +133,17 @@
                         <p>دليل عملي خطوة بخطوة لإجراءات الزواج والطلاق في مصر للأجانب والعرب — من طلب السفارة والشهر العقاري إلى التصديق والترجمة والإقامة، من تجربة شخصية.</p>
                         <a href="blog/marriage-divorce-egypt.html">اقرأ المقال →</a>
                     </div>
+                    <div class="card">
+                        <div class="blog-meta">
+                            <span class="blog-date">١٢ مارس ٢٠٢٢</span>
+                            <span class="blog-author">بقلم محمد طاهر الهمداني</span>
+                        </div>
+                        <h3>هرمونات السعادة</h3>
+                        <p>نبذة عن هرمونات السعادة الأربعة: الدوبامين، الأوكسيتوسين، الإندروفين، والسيروتونين — وكيف يمكن تعزيزها في حياتك اليومية.</p>
+                        <a href="blog/happiness-hormones.html">اقرأ المقال →</a>
+                    </div>
                 </div>
+                <p class="search-empty" id="searchEmpty">لا توجد مقالات مطابقة. جرّب كلمة أخرى.</p>
             </div>
         </section>
     </main>
@@ -135,7 +153,7 @@
             <p>© محمد الهمداني</p>
             <p class="footer-text" style="margin-top:0.5rem">
                 تصميم بواسطة محمد الهمداني |
-                <a href="https://bit.ly/BizMapper" target="_blank" style="color:#818cf8">Biz Mapper</a> v.1.6
+                <a href="https://bit.ly/BizMapper" target="_blank" style="color:#818cf8">Biz Mapper</a> v.1.7
             </p>
         </div>
     </footer>
