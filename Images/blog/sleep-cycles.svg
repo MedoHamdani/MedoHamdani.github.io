@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#172554"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <circle cx="120" cy="110" r="3" fill="#e2e8f0" opacity="0.8"/>
+  <circle cx="230" cy="70" r="2.5" fill="#e2e8f0" opacity="0.7"/>
+  <circle cx="660" cy="90" r="3" fill="#e2e8f0" opacity="0.8"/>
+  <circle cx="700" cy="180" r="2" fill="#e2e8f0" opacity="0.6"/>
+  <circle cx="90" cy="220" r="2" fill="#e2e8f0" opacity="0.6"/>
+  <path d="M500 90 a130 130 0 1 0 90 150 a110 110 0 1 1 -90 -150 z" fill="#fbbf24"/>
+  <g transform="translate(150,330)">
+    <rect x="40" y="0" width="420" height="46" rx="14" fill="#1e293b"/>
+    <rect x="0" y="28" width="500" height="60" rx="30" fill="#334155"/>
+    <path d="M100 28 q0 -34 44 -34 q44 0 44 34" fill="#64748b"/>
+    <path d="M230 28 q0 -34 44 -34 q44 0 44 34" fill="#64748b"/>
+    <path d="M360 28 q0 -34 44 -34 q44 0 44 34" fill="#64748b"/>
+  </g>
+  <text x="620" y="430" font-family="Georgia, serif" font-size="110" fill="#fbbf24" font-weight="bold">Z</text>
+  <text x="680" y="360" font-family="Georgia, serif" font-size="70" fill="#fbbf24" opacity="0.7">Z</text>
+  <text x="720" y="300" font-family="Georgia, serif" font-size="45" fill="#fbbf24" opacity="0.45">z</text>
+</svg>
