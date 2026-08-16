@@ -32,15 +32,15 @@ function filterArticles() {
     var empty = document.getElementById('searchEmpty');
     var cards = document.querySelectorAll('.cards-grid .card');
     if (!input || !cards.length) return;
-    var query = input.value.toLowerCase();
+    var query = input.value.toLowerCase().trim();
     var visible = 0;
     cards.forEach(function(card) {
-        var match = card.textContent.toLowerCase().indexOf(query) !== -1;
+        var match = query === '' || card.textContent.toLowerCase().indexOf(query) !== -1;
         card.style.display = match ? '' : 'none';
         if (match) visible++;
     });
     if (empty) {
-        empty.style.display = visible === 0 && query.length > 0 ? 'block' : 'none';
+        empty.style.display = query !== '' && visible === 0 ? 'block' : 'none';
     }
 }
 
@@ -50,6 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var btn = document.querySelector('.theme-toggle');
     if (btn) {
         btn.textContent = saved === 'dark' ? '\u{1F319}' : '\u2600\uFE0F';
+    }
+    var emptyMsg = document.getElementById('searchEmpty');
+    if (emptyMsg) {
+        emptyMsg.style.display = 'none';
     }
     var currentPath = window.location.pathname.split('/').pop() || 'index.html';
     var navLinks = document.querySelectorAll('.nav-links a:not(.lang-switch)');
