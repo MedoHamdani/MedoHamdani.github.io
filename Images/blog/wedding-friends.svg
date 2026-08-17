@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <g transform="translate(400,220)">
+    <circle r="70" fill="none" stroke="#fde68a" stroke-width="12"/>
+    <circle cx="84" cy="0" r="70" fill="none" stroke="#fde68a" stroke-width="12"/>
+    <rect x="36" y="-12" width="64" height="24" rx="12" fill="#4f46e5"/>
+  </g>
+  <path d="M240 320 Q280 270 320 320 Q360 270 400 320" fill="none" stroke="#fecdd3" stroke-width="6" stroke-linecap="round"/>
+  <path d="M440 320 Q480 270 520 320 Q560 270 600 320" fill="none" stroke="#fecdd3" stroke-width="6" stroke-linecap="round"/>
+  <text x="400" y="420" font-family="Georgia, serif" font-size="38" fill="#e0e7ff" text-anchor="middle">زفاف الأصدقاء</text>
+</svg>

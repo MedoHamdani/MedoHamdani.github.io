@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ca8a04"/>
+      <stop offset="100%" stop-color="#422006"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <g transform="translate(400,210)">
+    <path d="M-260 60 Q-240 -30 -150 -60 Q-40 -100 60 -90 Q170 -80 220 -20 Q260 30 240 90 Q220 150 140 180 Q60 200 -40 190 Q-140 180 -200 130 Q-250 90 -260 60 Z" fill="none" stroke="#fef3c7" stroke-width="8"/>
+    <path d="M-200 40 Q-150 -20 -40 -60" fill="none" stroke="#fef3c7" stroke-width="8"/>
+    <path d="M-120 -10 Q-80 -40 0 -55" fill="none" stroke="#fef3c7" stroke-width="8"/>
+    <path d="M60 10 Q120 -10 190 20" fill="none" stroke="#fef3c7" stroke-width="8"/>
+    <circle cx="0" cy="-20" r="12" fill="#fef3c7"/>
+    <circle cx="90" cy="20" r="10" fill="#fef3c7"/>
+    <circle cx="-60" cy="30" r="9" fill="#fef3c7"/>
+    <circle cx="150" cy="70" r="8" fill="#fef3c7"/>
+    <path d="M0 60 Q30 90 70 80 Q110 70 130 100" fill="none" stroke="#fef3c7" stroke-width="7" stroke-linecap="round"/>
+  </g>
+  <text x="400" y="420" font-family="Georgia, serif" font-size="40" fill="#fef3c7" text-anchor="middle">اليوم العالمي للغة العربية</text>
+</svg>
