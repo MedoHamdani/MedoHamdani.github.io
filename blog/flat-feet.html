@@ -13,19 +13,17 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         article { padding: 3rem 0; }
-        article h1 { font-size: 2.2rem; color: #1e293b; margin-bottom: 1rem; line-height: 1.3; }
-        article h2 { margin-top: 2.5rem; color: #1e293b; font-size: 1.8rem; }
-        article h3 { margin-top: 1.8rem; color: #334155; font-size: 1.3rem; }
-        article p { margin-bottom: 1.2rem; color: #334155; }
-        article ul, article ol { margin-bottom: 1.2rem; padding-right: 1.5rem; }
-        article li { margin-bottom: 0.6rem; }
+        article h1 { font-size: 2rem; color: #1e293b; margin-bottom: 1rem; line-height: 1.3; }
+        article h2 { margin-top: 2rem; color: #1e293b; font-size: 1.8rem; }
+        article h3 { margin-top: 1.5rem; color: #1e293b; font-size: 1.4rem; }
+        article p { margin-bottom: 1.2rem; color: #334155; font-size: 1.1rem; }
+        article ul, article ol { margin-bottom: 1.2rem; padding-left: 1.5rem; }
+        article li { margin-bottom: 0.6rem; color: #334155; }
         article .container { max-width: 900px; }
-        .back-link { display: inline-block; margin-bottom: 2rem; color: #2563eb; text-decoration: none; font-weight: 500; }
-        .highlight-box { background: #dbeafe; border-right: 4px solid #2563eb; padding: 1.5rem; margin: 2rem 0; border-radius: 8px; }
-        [data-theme="dark"] article h1, [data-theme="dark"] article h2 { color: #e2e8f0; }
-        [data-theme="dark"] article h3 { color: #94a3b8; }
+        .meta { color: #64748b; margin-bottom: 2rem; }
+        .back-link { display: inline-block; margin-bottom: 2rem; color: #2563eb; text-decoration: none; font-weight: 500; font-size: 1.1rem; }
+        [data-theme="dark"] article h1, [data-theme="dark"] article h2, [data-theme="dark"] article h3 { color: #e2e8f0; }
         [data-theme="dark"] article p, [data-theme="dark"] article li { color: #94a3b8; }
-        [data-theme="dark"] .highlight-box { background: #1e3a5f; }
     </style>
 </head>
 <body>
@@ -48,7 +46,7 @@
                     <a href="../products.html">Products</a>
                     <a href="../contact.html">Contact</a>
                     <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
-                    <a href="../../ar/blog/knee-flatfoot-treatment.html" class="lang-switch">ع</a>
+                    <a href="../../ar/blog/knee-flatfoot-treatment.html" class="lang-switch">عربي</a>
                 </div>
                 <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -85,7 +83,7 @@
             <h2 class="article-title">Flat Feet and Knee Pain: The Hidden Connection and How to Fix It</h2>
             <a href="../articles.html" class="back-link" style="margin-bottom:1.5rem;display:inline-block">← Back to Articles</a>
 
-                <img src="../Images/foot-images/normal-arch.jpg" alt="Side view diagram comparing normal foot arch versus flat foot (pes planus)" class="featured-image">
+                <img id="hero-image" src="../Images/foot-images/normal-arch.jpg" alt="Side view diagram comparing normal foot arch versus flat foot (pes planus)" class="featured-image">
                 <div class="image-caption">Normal arch vs flat foot — how the medial longitudinal arch collapses in pes planus.</div>
 
                 <h2>What Are Flat Feet?</h2>
@@ -239,7 +237,7 @@
             </div>
             <p class="footer-text">
                 Design by Medo Hamdani | 
-                <a href="https://bit.ly/BizMapper" target="_blank">Biz Mapper</a> v.2.8
+                <a href="https://bit.ly/BizMapper" target="_blank">Biz Mapper</a> v.2.9
             </p>
         </div>
     </footer>

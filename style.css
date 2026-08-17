@@ -563,7 +563,7 @@ footer::before {
 /* Article Images */
 .featured-image {
     width: 100%;
-    max-width: 750px;
+    max-width: 560px;
     border-radius: 12px;
     margin: 1.5rem auto;
     display: block;
@@ -954,7 +954,7 @@ footer::before {
 .article-content .featured-image {
     border-radius: 12px;
     margin: 1.5rem auto;
-    max-width: 750px;
+    max-width: 560px;
     display: block;
 }
 .article-content p {
