@@ -415,6 +415,57 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Article expandable content */
+        .card article {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            text-align: start;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .card.expanded article {
+            display: block;
+        }
+
+        .card article p {
+            margin-bottom: 0.75rem;
+        }
+
+        .card article ol {
+            margin: 0 0 0.75rem 1.25rem;
+            padding-left: 0.5rem;
+        }
+
+        [dir="rtl"] .card article ol {
+            margin: 0 1.25rem 0.75rem 0;
+            padding-right: 0.5rem;
+        }
+
+        .card article li {
+            margin-bottom: 0.5rem;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: #2563eb;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: inherit;
+            font-family: inherit;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more-btn:hover {
+            color: #1d4ed8;
+        }
     </style>
 </head>
 <body>
@@ -496,6 +547,15 @@
                         <h3 id="blog4">Getting Married in Sydney</h3>
                         <p>Guide and personal experience about marriage planning in Sydney, Australia.</p>
                         <a href="https://getmarriedinsydney.blogspot.com/2025/04/muzmatch-bio-medo-hamdani.html" target="_blank">Read More →</a>
+                    </div>
+                    <div class="card">
+                        <div class="blog-meta">
+                            <span class="blog-date" id="blog5Date">February 18, 2022</span>
+                            <span class="blog-author" id="blog5Author">By Medo Hamdani</span>
+                        </div>
+                        <h3 id="blog5">The Difference Between Upbringing and Caregiving for Children</h3>
+                        <p id="blog5Excerpt">Did you know that following up with your kids, making sure they eat, keeping them well-dressed, and helping with their homework is called caregiving — not upbringing! So what is upbringing?</p>
+                        <a href="blog/upbringing-vs-caregiving.html" id="blog5Link">Read More →</a>
                     </div>
                 </div>
             </div>
@@ -687,6 +747,13 @@
                 blog2: "Japanese Anime & Culture",
                 blog3: "Personal Journey & Thoughts",
                 blog4: "Getting Married in Sydney",
+                blog5: "The Difference Between Upbringing and Caregiving for Children",
+                blog5Excerpt: "Did you know that following up with your kids, making sure they eat, keeping them well-dressed, and helping with their homework is called caregiving — not upbringing! So what is upbringing?",
+                blog5Date: "February 18, 2022",
+                blog5Author: "By Medo Hamdani",
+                blog5Link: "Read More →",
+                readMoreText: "Read Full Article ↓",
+                readLessText: "Show Less ↑",
                 video1: "Arabic OCR Overview 2022",
                 video2: "Podcast Episodes",
                 project1: "Arabic Digitalization Group",
@@ -716,6 +783,13 @@
                 blog2: "الأنمي الياباني والثقافة",
                 blog3: "رحلتي الشخصية وأفكاري",
                 blog4: "الزواج في سيدني",
+                blog5: "الفرق بين التربية والرعاية للأطفال",
+                blog5Excerpt: "هل تعلم أن متابعة الأولاد والاهتمام بإطعامهم وظهورهم بالمظهر الحسن وحل الواجبات تسمى رعاية وليست تربية! فما هي التربية إذًا؟",
+                blog5Date: "١٨ فبراير ٢٠٢٢",
+                blog5Author: "بقلم محمد الهمداني",
+                blog5Link: "اقرأ المقال ←",
+                readMoreText: "اقرأ المقال كاملًا ↓",
+                readLessText: "إخفاء ↑",
                 video1: "نظرة عامة على التعرف الضوئي على الحروف العربية 2022",
                 video2: "حلقات البودكاست",
                 project1: "مجموعة الرقمنة العربية",
@@ -741,12 +815,23 @@
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
             
-            // Update all elements with IDs
+            // Update all elements with IDs (plain text keys only; HTML keys handled below)
             Object.keys(t).forEach(key => {
+                if (key.endsWith('Content')) return;
                 const element = document.getElementById(key);
                 if (element) {
                     element.textContent = t[key];
                 }
+            });
+
+// Reset expanded state and button label when switching language
+            const expandedCard = document.querySelector('.card.expanded');
+            if (expandedCard) {
+                expandedCard.classList.remove('expanded');
+            }
+            document.querySelectorAll('.read-more-btn').forEach(btn => {
+                const span = btn.querySelector('span');
+                if (span) span.textContent = t.readMoreText;
             });
             
             // Update language switch button
@@ -765,6 +850,19 @@
             const mobileMenu = document.getElementById('mobileMenu');
             if (mobileMenu) {
                 mobileMenu.classList.toggle('active');
+            }
+        }
+
+        // Expand / collapse full article inside a blog card
+        function toggleArticle(cardId, btn) {
+            const card = document.getElementById(cardId);
+            if (!card || !btn) return;
+            const span = btn.querySelector('span');
+            const expanded = card.classList.toggle('expanded');
+            if (span) {
+                span.textContent = expanded
+                    ? translations[currentLang].readLessText
+                    : translations[currentLang].readMoreText;
             }
         }
 
